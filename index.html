@@ -6,23 +6,23 @@
     <title>ק"ש - חזקים ביחד</title>
     <style>
         :root { 
-            --dark: #334155; 
-            --gold: #946c00; 
-            --bg: #fcfcfc; 
+            --navy: #1e293b; 
+            --gold: #b59410; 
+            --bg: #f8fafc; 
             --white: #ffffff;
             --muted: #64748b;
         }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--dark); text-align: right; padding-bottom: 50px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--navy); text-align: right; padding-bottom: 50px; }
         
-        /* Header */
+        /* Header Section */
         .header { background: var(--white); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
-        .city-symbol { width: 100%; max-width: 260px; height: auto; display: inline-block; }
-        .header h1 { font-size: 24px; margin: 10px 0; color: var(--dark); font-weight: 900; }
+        .city-symbol { width: 100px; height: auto; margin-bottom: 10px; fill: var(--navy); }
+        .header h1 { font-size: 26px; margin: 10px 0; color: var(--navy); font-weight: 900; }
         
-        /* Navigation */
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: var(--dark); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        /* Navigation Bar */
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 10px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 14px; }
+        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 14px; }
         .cat-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
 
         .container { padding: 20px; max-width: 650px; margin: 0 auto; }
@@ -30,26 +30,30 @@
         /* Hero Section */
         .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .hero-img { width: 100%; height: 240px; background-size: cover; background-position: center; background-color: #f1f5f9; display: block; }
-        .hero-text { padding: 20px; text-align: center; }
-        .hero-text h2 { margin: 0; font-size: 20px; font-weight: 800; color: var(--dark); }
+        .hero-text { padding: 25px; text-align: center; }
+        .hero-text h2 { margin: 0; font-size: 22px; font-weight: 800; color: var(--navy); }
 
         /* Business Cards */
-        .card { background: var(--white); border-radius: 12px; margin-bottom: 12px; border: 1px solid #e2e8f0; overflow: hidden; }
-        .card-content { padding: 18px; }
-        .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 4px 0; color: var(--dark); }
-        .biz-info { font-size: 14px; color: var(--muted); }
+        .card { background: var(--white); border-radius: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .card-content { padding: 20px; }
+        .biz-name { font-size: 20px; font-weight: 800; margin: 0 0 5px 0; color: var(--navy); }
+        .biz-info { font-size: 15px; color: var(--muted); }
         
         /* Phone Button */
-        .btn-call { display: flex; align-items: center; justify-content: center; background: #fafafa; color: var(--dark); text-decoration: none; padding: 14px; font-weight: 800; font-size: 17px; border-top: 1px solid #f1f5f9; gap: 8px; transition: 0.2s; }
+        .btn-call { display: flex; align-items: center; justify-content: center; background: #fafafa; color: var(--navy); text-decoration: none; padding: 16px; font-weight: 800; font-size: 18px; border-top: 1px solid #f1f5f9; gap: 10px; transition: 0.2s; }
         .btn-call:hover { background: #fdfdfd; color: var(--gold); }
 
-        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--muted); font-size: 14px; }
+        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--navy); border-top: 1px solid #e2e8f0; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="https://img.mof.gov.il/economy/kiryatshmona.png" class="city-symbol" alt="קריית שמונה" onerror="this.src='https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/512px-Kiryat_Shmona_Symbol.svg.png'">
+    <svg class="city-symbol" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="50" y="55" font-size="12" text-anchor="middle" font-weight="bold" fill="currentColor">ק"ש</text>
+        <path d="M30 40 L50 20 L70 40 M50 20 L50 80" stroke="currentColor" stroke-width="2" fill="none"/>
+    </svg>
     <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
 
