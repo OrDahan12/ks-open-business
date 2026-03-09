@@ -88,7 +88,7 @@ const businesses = [
 const categories = ["הכל", "המבורגר ובשר", "פיצריות", "אסיאתי", "קינוחים ומתוקים", "סופרים", "שירותים"];
 const catBar = document.getElementById('catBar');
 catBar.innerHTML = categories.map(cat => 
-    `<button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>`
+    <button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>
 ).join('');
 
 function renderCards(data) {
@@ -107,7 +107,7 @@ function renderCards(data) {
                     ${b.info}
                 </div>
             </div>
-            ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר להזמנה</a>` : '<div style="padding:15px; text-align:center; color:#888; font-size:13px; border-top:1px solid #eee;">פרטי קשר בפוסט המקורי</div>'}
+            ${b.phone ? <a href="tel:${b.phone}" class="btn-call">📞 התקשר להזמנה</a> : '<div style="padding:15px; text-align:center; color:#888; font-size:13px; border-top:1px solid #eee;">פרטי קשר בפוסט המקורי</div>'}
         </div>
     `).join('');
 }
