@@ -380,72 +380,72 @@ const catConfig = {
     all: {
         label: "הכל",
         hero: "כל המקומות הפתוחים בקרית שמונה",
-        emoji: "🏔️",
+        emoji: "🏪",
         gradient: "linear-gradient(135deg, #1a2744 0%, #2d4a8a 60%, #1a2744 100%)",
-        imgUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"
     },
     meat: {
         label: "🥩 בשר ושיפודים",
         hero: "המבורגרים ושיפודים",
         emoji: "🥩",
         gradient: "linear-gradient(135deg, #7f1d1d, #991b1b)",
-        imgUrl: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80"
     },
     sushi: {
         label: "🍣 סושי וחלבי",
         hero: "אסיאתי, חומוס וחלבי",
         emoji: "🍣",
         gradient: "linear-gradient(135deg, #064e3b, #065f46)",
-        imgUrl: "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1582450871972-ab5ca641643d?w=800&q=80"
     },
     pizza: {
         label: "🍕 פיצות",
         hero: "פיצריות פעילות",
         emoji: "🍕",
         gradient: "linear-gradient(135deg, #7c2d12, #9a3412)",
-        imgUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80"
     },
     butcher: {
         label: "🔪 קצביות",
         hero: "קצביות ובשר טרי",
         emoji: "🥩",
         gradient: "linear-gradient(135deg, #450a0a, #7f1d1d)",
-        imgUrl: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?w=800&q=80"
     },
     shop: {
         label: "🛒 מינימרקטים וסופרים",
         hero: "סופרמרקטים וקניות",
         emoji: "🛒",
         gradient: "linear-gradient(135deg, #14532d, #166534)",
-        imgUrl: "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1534723452862-4c874018d66d?w=800&q=80"
     },
     leisure: {
         label: "🎈 פנאי ומתנות",
         hero: "פנאי, מתנות ועיצוב",
         emoji: "🎁",
         gradient: "linear-gradient(135deg, #1e1b4b, #312e81)",
-        imgUrl: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&q=80"
     },
     beauty: {
         label: "💅 טיפוח ויופי",
         hero: "קוסמטיקה וטיפוח",
         emoji: "💅",
         gradient: "linear-gradient(135deg, #4a044e, #701a75)",
-        imgUrl: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80"
     },
     service: {
         label: "🛠️ רכב ושירותים",
         hero: "מוסכים ושירותי תחזוקה",
         emoji: "🔧",
         gradient: "linear-gradient(135deg, #1c1917, #292524)",
-        imgUrl: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?w=800&q=80"
     },
     dessert: {
         label: "🍰 קינוחים ומתוקים",
         hero: "קינוחים, מאפים ומתוקים",
         emoji: "🍰",
         gradient: "linear-gradient(135deg, #831843, #9d174d)",
-        imgUrl: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
     }
 };
 
@@ -545,4 +545,13 @@ function renderCards(data, catId) {
 }
 
 function filterData(id, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b =
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
+    renderCards(filtered, id);
+}
+
+renderCards(businesses, 'all');
+</script>
+</body>
+</html>
