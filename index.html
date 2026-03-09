@@ -5,115 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ק"ש - חזקים ביחד</title>
     <style>
-        :root { --main-dark: #334155; --accent: #64748b; --bg: #f8fafc; --text: #1e293b; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--text); text-align: right; padding-bottom: 50px; }
-        .header { background: white; padding: 30px 20px; text-align: center; border-bottom: 1px solid #e2e8f0; }
-        .header h1 { font-size: 28px; margin: 0; color: var(--main-dark); font-weight: 800; }
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e2e8f0; }
+        :root { --primary: #1e3a8a; --accent: #f59e0b; --bg: #f8fafc; --white: #ffffff; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: #1e293b; text-align: right; padding-bottom: 50px; }
+        
+        /* Header */
+        .header { background: var(--white); padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--primary); }
+        .city-logo { width: 100%; max-width: 300px; height: auto; margin-bottom: 15px; }
+        .header h1 { font-size: 32px; margin: 10px 0; color: var(--primary); font-weight: 900; }
+        
+        /* Categories Navigation */
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 12px; background: var(--primary); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: #f1f5f9; padding: 10px 20px; border-radius: 8px; border: 1px solid #e2e8f0; font-weight: 600; white-space: nowrap; cursor: pointer; color: var(--main-dark); transition: 0.3s; }
-        .cat-btn.active { background: var(--main-dark); color: white; border-color: var(--main-dark); }
+        .cat-btn { background: rgba(255,255,255,0.15); color: white; padding: 12px 22px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 15px; }
+        .cat-btn.active { background: var(--white); color: var(--primary); border-color: var(--white); }
+
         .container { padding: 20px; max-width: 650px; margin: 0 auto; }
-        .card { background: white; border-radius: 12px; margin-bottom: 20px; overflow: hidden; border: 1px solid #e2e8f0; }
-        .cat-hero-img { width: 100%; height: 160px; background-size: cover; background-position: center; filter: grayscale(20%); }
+        
+        /* Hero Category Card */
+        .hero-card { background: var(--primary); color: white; border-radius: 20px; margin-bottom: 25px; padding: 30px; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .hero-card h2 { margin: 0; font-size: 24px; }
+
+        /* Business Card */
+        .card { background: var(--white); border-radius: 16px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
         .card-content { padding: 20px; }
-        .biz-name { font-size: 20px; font-weight: 700; margin: 0 0 10px 0; color: var(--main-dark); }
-        .biz-info { font-size: 15px; color: #475569; line-height: 1.6; }
-        .btn-call { display: flex; align-items: center; justify-content: center; background: #f8fafc; color: var(--main-dark); text-decoration: none; padding: 15px; font-weight: 700; border-top: 1px solid #e2e8f0; transition: 0.2s; }
-        .btn-call:hover { background: #f1f5f9; }
-        .footer { text-align: center; padding: 40px 20px; font-weight: 600; color: var(--accent); }
+        .biz-name { font-size: 22px; font-weight: 800; margin: 0 0 8px 0; color: var(--primary); }
+        .biz-info { font-size: 16px; color: #475569; font-weight: 500; }
+        
+        /* Phone Button - High Contrast */
+        .btn-call { display: flex; align-items: center; justify-content: center; background: var(--accent); color: #000; text-decoration: none; padding: 18px; font-weight: 900; font-size: 20px; border-top: 1px solid #eee; transition: 0.2s; }
+        .btn-call:active { background: #d97706; }
+
+        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--primary); background: white; border-top: 4px solid var(--accent); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
-        <span>🇮🇱</span>
-        <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/1200px-Kiryat_Shmona_Symbol.svg.png" alt="סמל קרית שמונה" style="height: 50px;">
-        <span>🇮🇱</span>
-    </div>
-    <h1>ק"ש - חזקים ביחד</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/1200px-Kiryat_Shmona_Symbol.svg.png" alt="קריית שמונה" class="city-logo">
+    <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
 
 <div class="categories" id="catBar"></div>
 
-<div class="container" id="bizContainer">
-    </div>
+<div class="container" id="bizContainer"></div>
 
 <div class="footer">
-    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>חזקים יחד! 🇮🇱
+    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>חזקים ביחד! 🇮🇱
 </div>
 
 <script>
 const catConfig = {
-    all: { label: "הכל", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800" },
-    meat: { label: "🥩 המבורגר ושיפודים", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" },
-    sushi: { label: "🍣 סושי, חלבי וחומוס", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800" },
-    pizza: { label: "🍕 פיצות", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
-    butcher: { label: "🔪 קצביות", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800" },
-    leisure: { label: "🎈 פנאי ומתנות", img: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=800" },
-    beauty: { label: "💅 טיפוח ויופי", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800" },
-    service: { label: "🛠️ רכב ושירותים", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" },
-    shop: { label: "🛒 סופרים וקניות", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" }
+    all: { label: "הכל", hero: "כל העסקים הפעילים" },
+    meat: { label: "🥩 המבורגר ושיפודים", hero: "בשרים, המבורגרים ועל האש" },
+    sushi: { label: "🍣 סושי, חלבי וחומוס", hero: "אסיאתי, חומוס, פלאפל וחלבי" },
+    pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות למשלוחים ואיסוף" },
+    butcher: { label: "🔪 קצביות", hero: "בשרים טריים ואיכותיים" },
+    leisure: { label: "🎈 פנאי ומתנות", hero: "מתנות, אופנה ובילוי" },
+    beauty: { label: "💅 טיפוח ויופי", hero: "קוסמטיקה ורפואה משלימה" },
+    service: { label: "🛠️ רכב ושירותים", hero: "מוסכים, שליחויות ותחזוקה" },
+    shop: { label: "🛒 סופרים וקניות", hero: "מוצרי צריכה ומזון" }
 };
 
 const businesses = [
     // בשר ושיפודים
-    { name: "SMB Burger", cat: "meat", phone: "0526164165", info: "המבורגר לילה 00:00-02:00" },
-    { name: "Best Burger", cat: "meat", phone: "0772016918", info: "11:00-17:00" },
-    { name: "אצל סמדי", cat: "meat", phone: "0522971225", info: "באגט ושיפודים - 50 ש\"ח לחיילים" },
-    { name: "הקבב של עובד", cat: "meat", phone: "0777661665", info: "קבב איכותי וטרי" },
-    { name: "רד מיט", cat: "meat", phone: "048344913", info: "17:00-01:00" },
+    { name: "SMB Burger", cat: "meat", phone: "052-6164165", info: "המבורגר לילה 00:00-02:00" },
+    { name: "Best Burger", cat: "meat", phone: "077-2016918", info: "11:00-17:00" },
+    { name: "אצל סמדי", cat: "meat", phone: "052-2971225", info: "באגט ושיפודים" },
+    { name: "הקבב של עובד", cat: "meat", phone: "077-7661665", info: "קבב איכותי וטרי" },
+    { name: "רד מיט (Red Meat)", cat: "meat", phone: "04-8344913", info: "17:00-01:00" },
 
     // סושי, חלבי, חומוס ופלאפל
-    { name: "יוניקורן Unicorn", cat: "sushi", phone: "048457766", info: "סושי ואסיאתי" },
-    { name: "חומוס אליהו", cat: "sushi", phone: "", info: "חומוס טרי יומיום" },
-    { name: "פלאפל עמר", cat: "sushi", phone: "", info: "פלאפל חם 08:30-15:00" },
-    { name: "בר בריא", cat: "sushi", phone: "048862424", info: "שייקים, מיצים וקערות בריאות" },
-    { name: "רוקו (Roco)", cat: "sushi", phone: "", info: "מסעדה איטלקית" },
+    { name: "יוניקורן Unicorn", cat: "sushi", phone: "04-8457766", info: "סושי ואסיאתי" },
+    { name: "חומוס אליהו", cat: "sushi", phone: "04-621-7602", info: "חומוס טרי יומיום" },
+    { name: "פלאפל עמר", cat: "sushi", phone: "050-431-3104", info: "פלאפל חם וטרי" },
+    { name: "בר בריא", cat: "sushi", phone: "04-8862424", info: "שייקים, מיצים וקערות בריאות" },
+    { name: "רוקו (Roco)", cat: "sushi", phone: "04-980-5000", info: "מסעדה איטלקית" },
 
     // פיצות
-    { name: "מרכז הפיצה", cat: "pizza", phone: "046997020", info: "יגאל ונת'י 12:00-20:00" },
-    { name: "פיצה נאפולי", cat: "pizza", phone: "", info: "משלוחים בלבד" },
-    { name: "פיצה העמק", cat: "pizza", phone: "", info: "פתוח למשלוחים" },
-    { name: "הפיצה שלי", cat: "pizza", phone: "", info: "פיצריה מקומית פתוחה" },
+    { name: "מרכז הפיצה", cat: "pizza", phone: "04-699-7020", info: "יגאל ונת'י 12:00-20:00" },
+    { name: "פיצה נאפולי", cat: "pizza", phone: "04-690-5105", info: "משלוחים בלבד" },
+    { name: "פיצה העמק", cat: "pizza", phone: "04-958-8992", info: "פתוח למשלוחים" },
+    { name: "הפיצה שלי", cat: "pizza", phone: "04-690-2328", info: "פיצריה מקומית פתוחה" },
 
     // קצביות
-    { name: "נתח קצבים", cat: "butcher", phone: "046905032", info: "בשרים טריים" },
-    { name: "מעדני הגליל", cat: "butcher", phone: "046943905", info: "פתוח עד 18:00" },
-    { name: "סופר בשר", cat: "butcher", phone: "046875544", info: "פתוח עד 20:00" },
+    { name: "נתח קצבים", cat: "butcher", phone: "04-6905032", info: "בשרים טריים" },
+    { name: "מעדני הגליל", cat: "butcher", phone: "04-6943905", info: "פתוח עד 18:00" },
+    { name: "סופר בשר", cat: "butcher", phone: "04-6875544", info: "פתוח עד 20:00" },
 
     // פנאי ומתנות
-    { name: "אלימלך אהבתי", cat: "leisure", phone: "", info: "אוכל מוכן ובילוי 08:30-19:00" },
-    { name: "פרדיס", cat: "leisure", phone: "", info: "חנות בגדים 10:00-18:00" },
-    { name: "המרכז לחד פעמי", cat: "leisure", phone: "", info: "כל הציוד לאירוח 09:00-17:00" },
-    { name: "ימית מארזים", cat: "leisure", phone: "0502755645", info: "מארזים בעיצוב אישי" },
-    { name: "שמחה בעיר", cat: "leisure", phone: "", info: "פנאי וציוד לאירועים 09:00-17:00" },
-    { name: "ארלוזורוב סנוקר", cat: "leisure", phone: "", info: "מועדון סנוקר 18:00-02:00" },
-    { name: "הגלריה", cat: "leisure", phone: "0527522566", info: "ריהוט ועיצוב הבית 10:00-17:00" },
+    { name: "אלימלך אהבתי", cat: "leisure", phone: "052-828-4939", info: "אוכל מוכן ובילוי 08:30-19:00" },
+    { name: "פרדיס", cat: "leisure", phone: "054-6785552", info: "חנות בגדים 10:00-18:00" },
+    { name: "המרכז לחד פעמי", cat: "leisure", phone: "04-689-6555", info: "09:00-17:00" },
+    { name: "ימית מארזים", cat: "leisure", phone: "050-2755645", info: "עיצוב אישי" },
+    { name: "שמחה בעיר", cat: "leisure", phone: "052-8375123", info: "09:00-17:00" },
+    { name: "ארלוזורוב סנוקר", cat: "leisure", phone: "050-658-8000", info: "18:00-02:00" },
+    { name: "הגלריה", cat: "leisure", phone: "052-7522566", info: "ריהוט ועיצוב הבית" },
 
     // טיפוח ויופי
-    { name: "אבישי נורליאן", cat: "beauty", phone: "", info: "דיקור ורפואה משלימה 08:00-15:00" },
-    { name: "רויאל גלואו", cat: "beauty", phone: "0506090999", info: "קוסמטיקה 10:00-20:00" },
-    { name: "טיפוחן", cat: "beauty", phone: "0525419530", info: "קוסמטיקה ויופי" },
-    { name: "אורי עיצוב גבות", cat: "beauty", phone: "0526789545", info: "עיצוב גבות מקצועי" },
-    { name: "ענת קוסמטיקה", cat: "beauty", phone: "0526066016", info: "טיפוח פנים ויופי" },
+    { name: "אבישי נורליאן", cat: "beauty", phone: "052-555-4210", info: "דיקור ורפואה משלימה" },
+    { name: "רויאל גלואו", cat: "beauty", phone: "050-6090999", info: "קוסמטיקה 10:00-20:00" },
+    { name: "טיפוחן", cat: "beauty", phone: "052-5419530", info: "קוסמטיקה ויופי" },
+    { name: "אורי עיצוב גבות", cat: "beauty", phone: "052-6789545", info: "עיצוב גבות" },
+    { name: "ענת קוסמטיקה", cat: "beauty", phone: "052-6066016", info: "טיפוח פנים" },
 
     // רכב ושירותים
-    { name: "המשלוח המהיר", cat: "service", phone: "0506444889", info: "שליחויות 10:00-00:00" },
-    { name: "יריב בן שימול", cat: "service", phone: "0544858222", info: "ניקיון חלונות ועסקים" },
-    { name: "קיה שירות רכב", cat: "service", phone: "", info: "מוסך ומכירה 08:00-16:00" },
-    { name: "המנעולן מוסרי", cat: "service", phone: "0502412082", info: "מנעולן 09:00-12:00" },
-    { name: "סוד החשמל", cat: "service", phone: "", info: "חשמלאי מוסמך זמין תמיד" },
-    { name: "סטארט פארט", cat: "service", phone: "0538302104", info: "אביזרים לרכב והתקנות" },
+    { name: "המשלוח המהיר", cat: "service", phone: "050-6444889", info: "שליחויות 10:00-00:00" },
+    { name: "יריב בן שימול", cat: "service", phone: "054-4858222", info: "ניקיון חלונות ועסקים" },
+    { name: "קיה שירות רכב", cat: "service", phone: "04-694-0398", info: "08:00-16:00" },
+    { name: "המנעולן מוסרי", cat: "service", phone: "050-2412082", info: "09:00-12:00" },
+    { name: "סוד החשמל", cat: "service", phone: "050-3433077", info: "חשמלאי מוסמך" },
+    { name: "סטארט פארט", cat: "service", phone: "053-8302104", info: "אביזרים והתקנות" },
 
     // סופרים וקניות
-    { name: "מינימרקט רסקו", cat: "shop", phone: "046951285", info: "סופרמרקט 06:00-22:00" },
-    { name: "מינימרקט דודו עזיז", cat: "shop", phone: "046940376", info: "סופרמרקט - משלוחים חינם" },
-    { name: "מינימרקט לב העיר", cat: "shop", phone: "0528010992", info: "משלוחים בתוך העיר" },
+    { name: "מינימרקט רסקו", cat: "shop", phone: "04-6951285", info: "06:00-22:00" },
+    { name: "מינימרקט דודו עזיז", cat: "shop", phone: "04-6940376", info: "משלוחים חינם" },
+    { name: "מינימרקט לב העיר", cat: "shop", phone: "052-8010992", info: "משלוחים בעיר" },
     { name: "מיני מרקט ברכת השם", cat: "shop", phone: "", info: "סניף שפרינצק" },
-    { name: "סופר ספיר", cat: "shop", phone: "", info: "סופרמרקט פעיל" },
-    { name: "ניצת הדובדבן", cat: "shop", phone: "", info: "מוצרי טבע 08:00-19:00" }
+    { name: "סופר ספיר יובלים", cat: "shop", phone: "04-695-0008", info: "סופרמרקט פעיל" },
+    { name: "ניצת הדובדבן", cat: "shop", phone: "04-694-0030", info: "מוצרי טבע" }
 ];
 
 const catBar = document.getElementById('catBar');
@@ -123,16 +132,8 @@ catBar.innerHTML = Object.entries(catConfig).map(([id, cfg]) =>
 
 function renderCards(data, catId) {
     const container = document.getElementById('bizContainer');
-    container.innerHTML = '';
+    container.innerHTML = `<div class="hero-card"><h2>${catConfig[catId].hero}</h2></div>`;
     
-    // תמונת קטגוריה מייצגת
-    const hero = document.createElement('div');
-    hero.className = 'card';
-    hero.innerHTML = `<div class="cat-hero-img" style="background-image: url('${catConfig[catId].img}')"></div>
-                     <div class="card-content" style="text-align: center; background: #f1f5f9;">
-                     <h3 style="margin:0; font-size: 16px;">${catConfig[catId].label}</h3></div>`;
-    container.appendChild(hero);
-
     data.forEach(b => {
         const card = document.createElement('div');
         card.className = 'card';
@@ -140,7 +141,7 @@ function renderCards(data, catId) {
                             <h2 class="biz-name">${b.name}</h2>
                             <div class="biz-info">${b.info}</div>
                          </div>` + 
-                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר: ${b.phone}</a>` : '');
+                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 חיוג: ${b.phone}</a>` : '');
         container.appendChild(card);
     });
 }
