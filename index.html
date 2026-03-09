@@ -5,48 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ק"ש - חזקים ביחד</title>
     <style>
-        :root { --dark: #334155; --gold: #946c00; --bg: #fcfcfc; --white: #ffffff; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--dark); text-align: right; padding-bottom: 50px; }
+        :root { --navy: #1e293b; --gold: #c5a059; --bg: #f8fafc; --white: #ffffff; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--navy); text-align: right; padding-bottom: 50px; }
         .header { background: var(--white); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
-        .city-symbol { width: 100%; max-width: 180px; height: auto; margin-bottom: 10px; }
-        .header h1 { font-size: 24px; margin: 10px 0; color: var(--dark); font-weight: 900; }
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: var(--dark); position: sticky; top: 0; z-index: 100; }
+        .city-logo { width: 100%; max-width: 280px; height: auto; margin-bottom: 10px; display: inline-block; }
+        .header h1 { font-size: 26px; margin: 10px 0; color: var(--navy); font-weight: 900; }
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 10px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); font-weight: 700; white-space: nowrap; cursor: pointer; font-size: 14px; }
+        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 14px; }
         .cat-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
-        .container { padding: 20px; max-width: 600px; margin: 0 auto; }
+        .container { padding: 20px; max-width: 650px; margin: 0 auto; }
         .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .hero-img { width: 100%; height: 220px; background-size: cover; background-position: center; background-color: #f1f5f9; }
-        .hero-text { padding: 20px; text-align: center; }
-        .hero-text h2 { margin: 0; font-size: 20px; font-weight: 800; color: var(--dark); }
-        .card { background: var(--white); border-radius: 12px; margin-bottom: 12px; border: 1px solid #e2e8f0; overflow: hidden; }
-        .card-content { padding: 18px; }
-        .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 4px 0; color: var(--dark); }
-        .biz-info { font-size: 14px; color: #64748b; }
-        .btn-call { display: flex; align-items: center; justify-content: center; background: #fafafa; color: var(--dark); text-decoration: none; padding: 14px; font-weight: 800; font-size: 17px; border-top: 1px solid #f1f5f9; gap: 8px; }
-        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: #64748b; font-size: 14px; }
+        .hero-img { width: 100%; height: 240px; background-size: cover; background-position: center; background-color: #cbd5e1; display: block; }
+        .hero-text { padding: 25px; text-align: center; }
+        .hero-text h2 { margin: 0; font-size: 22px; font-weight: 800; color: var(--navy); }
+        .card { background: var(--white); border-radius: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .card-content { padding: 20px; }
+        .biz-name { font-size: 20px; font-weight: 800; margin: 0 0 5px 0; color: var(--navy); }
+        .biz-info { font-size: 15px; color: #64748b; }
+        .btn-call { display: flex; align-items: center; justify-content: center; background: #fafafa; color: var(--navy); text-decoration: none; padding: 16px; font-weight: 800; font-size: 18px; border-top: 1px solid #f1f5f9; gap: 10px; transition: 0.2s; }
+        .footer { text-align: center; padding: 40px 20px; font-weight: 700; color: #64748b; border-top: 1px solid #e2e8f0; margin-top: 30px; font-size: 14px; }
+        .footer a { color: var(--gold); text-decoration: none; }
     </style>
 </head>
 <body>
+
 <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/512px-Kiryat_Shmona_Symbol.svg.png" class="city-symbol" alt="סמל קרית שמונה">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/512px-Kiryat_Shmona_Symbol.svg.png" alt="קריית שמונה" class="city-logo">
     <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
+
 <div class="categories" id="catBar"></div>
 <div class="container" id="bizContainer"></div>
-<div class="footer">נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>חזקים יחד! 🇮🇱</div>
+
+<div class="footer">
+    נעשה ע״י אור דהן<br>
+    לפניות: <a href="mailto:or.ohayonn@gmail.com">or.ohayonn@gmail.com</a><br><br>
+    חזקים יחד! 🇮🇱
+</div>
 
 <script>
 const catConfig = {
-    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://images.unsplash.com/photo-1624451006030-3e284a60f38b?w=1000" },
+    all: { label: "הכל", hero: "נוף החרמון וקרית שמונה", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Mount_Hermon_and_the_Hula_Valley.jpg/1280px-Mount_Hermon_and_the_Hula_Valley.jpg" },
     meat: { label: "🥩 בשר ושיפודים", hero: "המבורגרים ושיפודים", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" },
     sushi: { label: "🍣 סושי וחלבי", hero: "אסיאתי, חומוס וחלבי", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800" },
     pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
     butcher: { label: "🔪 קצביות", hero: "קצביות ובשר טרי", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800" },
+    shop: { label: "🛒 מינימרקטים וסופרים", hero: "סופרמרקטים וקניות", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" },
     leisure: { label: "🎈 פנאי ומתנות", hero: "פנאי, מתנות ועיצוב", img: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=800" },
     beauty: { label: "💅 טיפוח ויופי", hero: "קוסמטיקה וטיפוח", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800" },
-    service: { label: "🛠️ רכב ושירותים", hero: "מוסכים ושירותי תחזוקה", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" },
-    shop: { label: "🛒 קניות", hero: "סופרמרקטים וקניות", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" }
+    service: { label: "🛠️ רכב ושירותים", hero: "מוסכים ושירותי תחזוקה", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" }
 };
 
 const businesses = [
@@ -89,21 +97,35 @@ const businesses = [
 ];
 
 const catBar = document.getElementById('catBar');
-catBar.innerHTML = Object.entries(catConfig).map(([id, cfg]) => `<button class="cat-btn ${id==='all'?'active':''}" onclick="filterData('${id}', this)">${cfg.label}</button>`).join('');
+catBar.innerHTML = Object.entries(catConfig).map(([id, cfg]) => 
+    `<button class="cat-btn ${id==='all'?'active':''}" onclick="filterData('${id}', this)">${cfg.label}</button>`
+).join('');
 
 function renderCards(data, catId) {
     const container = document.getElementById('bizContainer');
-    container.innerHTML = `<div class="hero-card"><div class="hero-img" style="background-image: url('${catConfig[catId].img}')"></div><div class="hero-text"><h2>${catConfig[catId].hero}</h2></div> Hebrew</div>`;
+    container.innerHTML = `<div class="hero-card">
+                            <div class="hero-img" style="background-image: url('${catConfig[catId].img}')"></div>
+                            <div class="hero-text"><h2>${catConfig[catId].hero}</h2></div>
+                           </div>`;
     data.forEach(b => {
-        const card = document.createElement('div'); card.className = 'card';
-        card.innerHTML = `<div class="card-content"><h2 class="biz-name">${b.name}</h2><div class="biz-info">${b.info}</div></div>` + (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 חיוג: ${b.phone}</a>` : '');
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<div class="card-content">
+                            <h2 class="biz-name">${b.name}</h2>
+                            <div class="biz-info">${b.info}</div>
+                         </div>` + 
+                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 חיוג: ${b.phone}</a>` : '');
         container.appendChild(card);
     });
 }
+
 function filterData(id, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    renderCards(id === 'all' ? businesses : businesses.filter(b => b.cat === id), id);
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filtered = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
+    renderCards(filtered, id);
 }
+
 renderCards(businesses, 'all');
 </script>
 </body>
