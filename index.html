@@ -77,8 +77,8 @@
 
         /* Colorful "8" circles icon matching official logo */
         .eight-icon {
-            width: 90px;
-            height: 110px;
+            width: 80px;
+            height: 105px;
             flex-shrink: 0;
         }
 
@@ -331,21 +331,45 @@
                 </div>
             </div>
 
-            <!-- Figure-8 shaped logo using path -->
-            <svg class="eight-icon" viewBox="0 0 70 116" xmlns="http://www.w3.org/2000/svg">
-                <!-- Top lobe of 8: teal rounded rectangle -->
-                <rect x="8" y="4" width="54" height="50" rx="27" fill="#2bbcd4"/>
-                <rect x="19" y="14" width="32" height="30" rx="16" fill="#1a2744"/>
-                <!-- Bottom lobe of 8: pink rounded rectangle (bigger) -->
-                <rect x="4" y="58" width="62" height="54" rx="30" fill="#e91e8c"/>
-                <rect x="16" y="70" width="38" height="30" rx="15" fill="#1a2744"/>
-                <!-- Accent dots -->
-                <circle cx="4" cy="40" r="5" fill="#2196f3"/>
-                <circle cx="66" cy="40" r="5" fill="#ff5722"/>
-                <circle cx="4" cy="80" r="5" fill="#4caf50"/>
-                <circle cx="66" cy="80" r="5" fill="#ff9800"/>
-                <circle cx="28" cy="1" r="4" fill="#9c27b0"/>
-                <circle cx="48" cy="1" r="4" fill="#ffd600"/>
+            <!-- Official Kiryat Shmona 8 logo -->
+            <svg class="eight-icon" viewBox="0 0 375 490" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <mask id="topRing" maskUnits="userSpaceOnUse">
+                        <circle cx="188" cy="110" r="108" fill="white"/>
+                        <circle cx="188" cy="110" r="57" fill="black"/>
+                    </mask>
+                    <mask id="bottomCluster" maskUnits="userSpaceOnUse">
+                        <circle cx="202" cy="286" r="114" fill="white"/>
+                        <circle cx="116" cy="298" r="96" fill="white"/>
+                        <circle cx="266" cy="285" r="84" fill="white"/>
+                        <circle cx="190" cy="273" r="65" fill="black"/>
+                    </mask>
+                </defs>
+                <!-- Top teal ring -->
+                <g mask="url(#topRing)">
+                    <circle cx="188" cy="110" r="108" fill="#72C9C7" opacity="0.92"/>
+                </g>
+                <!-- Bottom cluster: lime (back), pink (left), orange (right) -->
+                <g mask="url(#bottomCluster)">
+                    <circle cx="202" cy="286" r="114" fill="#C8DC5A" opacity="0.88"/>
+                    <circle cx="116" cy="298" r="96" fill="#E870A0" opacity="0.84"/>
+                    <circle cx="266" cy="285" r="84" fill="#F5A86A" opacity="0.88"/>
+                </g>
+                <!-- Purple accent -->
+                <circle cx="108" cy="357" r="32" fill="#9A58C0" opacity="0.88"/>
+                <!-- Orange small (far left) -->
+                <circle cx="63" cy="379" r="19" fill="#F07040" opacity="0.9"/>
+                <!-- Light blue -->
+                <circle cx="148" cy="391" r="36" fill="#7ED0E8" opacity="0.88"/>
+                <!-- Yellow/gold -->
+                <circle cx="208" cy="394" r="47" fill="#F0C838" opacity="0.9"/>
+                <!-- Green small -->
+                <circle cx="272" cy="378" r="28" fill="#98D85C" opacity="0.88"/>
+                <!-- Tiny bottom dots -->
+                <circle cx="90" cy="429" r="10" fill="#E84040"/>
+                <circle cx="183" cy="432" r="12" fill="#7040A8"/>
+                <circle cx="207" cy="438" r="8" fill="#E06090"/>
+                <circle cx="191" cy="459" r="8" fill="#94D458"/>
             </svg>
         </div>
     </div>
