@@ -3,72 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ק"ש פתוחה - מידע בזמן מלחמה</title>
+    <title>ק"ש פתוחה</title>
     <style>
-        :root { --wolt-blue: #00c2e8; --bg: #f3f5f6; --text: #202125; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--text); padding-bottom: 30px; }
-        .header { background: white; padding: 25px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header h1 { font-size: 24px; margin: 0; color: var(--wolt-blue); font-weight: 900; }
-        .header p { margin: 5px 0 0; font-size: 14px; color: #666; }
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: #f0f1f2; padding: 10px 18px; border-radius: 25px; border: none; white-space: nowrap; font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 14px; }
-        .cat-btn.active { background: var(--wolt-blue); color: white; }
-        .container { padding: 15px; display: grid; gap: 15px; max-width: 600px; margin: 0 auto; }
-        .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .card-content { padding: 16px; }
-        .biz-category { font-size: 11px; color: var(--wolt-blue); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
-        .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 8px 0; color: #000; }
-        .biz-info { font-size: 14px; color: #444; line-height: 1.5; }
-        .btn-call { display: flex; align-items: center; justify-content: center; background: var(--wolt-blue); color: white; text-decoration: none; padding: 15px; font-weight: 800; gap: 10px; border-radius: 0 0 16px 16px; font-size: 16px; }
+        body { font-family: sans-serif; background: #f3f5f6; padding: 20px; text-align: center; }
+        .card { background: white; padding: 15px; border-radius: 12px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: right; }
+        h1 { color: #00c2e8; }
+        .btn { display: block; background: #00c2e8; color: white; text-decoration: none; padding: 10px; border-radius: 5px; margin-top: 10px; text-align: center; }
     </style>
 </head>
 <body>
-
-<div class="header">
     <h1>ק"ש פתוחה 🇮🇱</h1>
-    <p>עסקים פעילים בקריית שמונה בזמן המלחמה</p>
-</div>
+    <p>עסקים פעילים בקריית שמונה</p>
 
-<div class="categories" id="catBar"></div>
-<div class="container" id="bizContainer"></div>
+    <div class="card">
+        <h3>Best Burger</h3>
+        <p>⏰ 11:00-17:00<br>המבורגר וקריספי צ'יקן</p>
+        <a href="tel:0772016918" class="btn">📞 התקשר להזמנה</a>
+    </div>
 
-<script>
-const businesses = [
-    { name: "Best Burger", cat: "המבורגר ובשר", hours: "11:00-17:00", phone: "0772016918", info: "המבורגר וקריספי צ'יקן, כשר למהדרין." },
-    { name: "אצל סמדי", cat: "המבורגר ובשר", hours: "פעיל", phone: "0522971225", info: "באגטים, שיפודים ובשרים. מבצע לחיילים: באגט+שתיה ב-50 ש\"ח." },
-    { name: "Smb.burger", cat: "המבורגר ובשר", hours: "00:00-02:00", phone: "", info: "פתוח בחמישי ומוצ\"ש עד 01:00." },
-    { name: "פיצה נאפולי", cat: "פיצריות", hours: "16:00-23:30", phone: "", info: "עובדים במתכונת משלוחים בלבד." },
-    { name: "Unicorn (יוניקורן)", cat: "אסיאתי", hours: "עד 22:00", phone: "048457766", info: "סושי ותפריט אסיאתי חדש. משלוחים לכל האיזור." },
-    { name: "מינימרקט לב העיר", cat: "סופרים", hours: "06:00-19:00", phone: "0528010992", info: "משלוחים חינם בתוך העיר (ברק)." },
-    { name: "המנעולן מוסרי", cat: "שירותים", hours: "09:00-12:00", phone: "0502412082", info: "מנעולנות ואופניים. זמין לחירום 24/7." }
-];
+    <div class="card">
+        <h3>יוניקורן (Unicorn)</h3>
+        <p>⏰ עד 22:00<br>סושי ותפריט אסיאתי</p>
+        <a href="tel:048457766" class="btn">📞 התקשר להזמנה</a>
+    </div>
 
-const categories = ["הכל", ...new Set(businesses.map(b => b.cat))];
-const catBar = document.getElementById('catBar');
-catBar.innerHTML = categories.map(cat => `<button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>`).join('');
-
-function renderCards(data) {
-    const container = document.getElementById('bizContainer');
-    container.innerHTML = data.map(b => `
-        <div class="card">
-            <div class="card-content">
-                <div class="biz-category">${b.cat}</div>
-                <h2 class="biz-name">${b.name}</h2>
-                <div class="biz-info">⏰ שעות: <b>${b.hours}</b><br>${b.info}</div>
-            </div>
-            ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר להזמנה</a>` : ''}
-        </div>
-    `).join('');
-}
-
-function filterData(cat, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderCards(cat === 'הכל' ? businesses : businesses.filter(b => b.cat === cat));
-}
-
-renderCards(businesses);
-</script>
+    <div class="card">
+        <h3>מינימרקט לב העיר</h3>
+        <p>⏰ 06:00-19:00<br>משלוחים חינם בתוך העיר</p>
+        <a href="tel:0528010992" class="btn">📞 התקשר להזמנה</a>
+    </div>
 </body>
 </html>
