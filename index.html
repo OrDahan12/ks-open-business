@@ -462,6 +462,59 @@
             box-shadow: 0 2px 12px rgba(255,255,255,0.6);
         }
 
+        /* ===== FORM TABS ===== */
+        .form-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1.5px solid var(--card-border);
+        }
+
+        .form-tab {
+            flex: 1;
+            padding: 14px 16px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .form-tab:hover {
+            background: #e2e8f0;
+        }
+
+        .form-tab.active {
+            background: var(--navy);
+            color: white;
+        }
+
+        .form-tab:first-child {
+            border-left: 1px solid var(--card-border);
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border: 1.5px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 14px;
+            color: #1e40af;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
         /* ===== PRIVACY POLICY MODAL ===== */
         .privacy-overlay {
             display: none;
@@ -613,6 +666,13 @@
 <!-- ===== JOIN SECTION ===== -->
 <div class="join-section" id="joinSection">
     <div class="join-card">
+        <div class="form-tabs">
+            <button class="form-tab active" onclick="switchTab('add')">➕ הוספת עסק</button>
+            <button class="form-tab" onclick="switchTab('remove')">🗑️ הורדת עסק</button>
+        </div>
+
+        <!-- === ADD TAB === -->
+        <div id="addTab">
         <h2>➕ הוסיפו את העסק שלכם</h2>
         <p class="join-subtitle">
             רוצים להופיע ברשימה? מלאו את הפרטים ונחזור אליכם בהקדם.
@@ -667,6 +727,45 @@
             ✅ תודה! הפרטים נשלחו בהצלחה.<br>
             <span style="font-weight:500;font-size:14px;">נעבור על הבקשה ונחזור אליך בהקדם 🙏</span>
         </div>
+        </div>
+        <!-- === END ADD TAB === -->
+
+        <!-- === REMOVE TAB === -->
+        <div id="removeTab" style="display:none;">
+        <h2>🗑️ בקשה להורדת עסק</h2>
+        <p class="join-subtitle">
+            רוצים להסיר את העסק שלכם מהרשימה? מלאו את הפרטים הבאים.
+        </p>
+        <div class="info-box">
+            <strong>ℹ️ שימו לב</strong>
+            לאחר שליחת הבקשה, צוות האתר יצור קשר עם בית העסק לאימות הבקשה ולביצוע הורדת העסק מהרשימה.
+        </div>
+        <form id="removeForm" onsubmit="handleRemoveSubmit(event)">
+            <div class="form-group">
+                <label for="r-biz-name">שם העסק *</label>
+                <input type="text" id="r-biz-name" placeholder="שם העסק כפי שמופיע ברשימה" required maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="r-contact">שם איש הקשר *</label>
+                <input type="text" id="r-contact" placeholder="שמך המלא" required maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="r-phone">מספר טלפון *</label>
+                <input type="tel" id="r-phone" placeholder="050-0000000" required maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="r-reason">סיבת ההורדה</label>
+                <textarea id="r-reason" placeholder="למשל: העסק נסגר, שינוי בעלות..." maxlength="500"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">שלחו בקשה 📩</button>
+        </form>
+        <div class="success-banner" id="removeSuccessBanner">
+            ✅ תודה! בקשת ההורדה נשלחה בהצלחה.<br>
+            <span style="font-weight:500;font-size:14px;">צוות האתר יצור קשר עם בית העסק לאימות הבקשה 🙏</span>
+        </div>
+        </div>
+        <!-- === END REMOVE TAB === -->
+
     </div>
 </div>
 
@@ -855,7 +954,7 @@ let businesses = [];
 
 // Build category bar
 const catBar = document.getElementById('catBar');
-catBar.innerHTML = `<button class="cat-btn add-btn" onclick="showJoinForm(this)">➕ הוסף עסק</button>` + Object.entries(catConfig).map(([id, cfg]) =>
+catBar.innerHTML = `<button class="cat-btn add-btn" onclick="showJoinForm(this)">📋 ניהול עסק</button>` + Object.entries(catConfig).map(([id, cfg]) =>
     `<button class="cat-btn ${id==='all'?'active':''}" onclick="filterData('${id}', this)">${cfg.label}</button>`
 ).join('');
 
@@ -921,6 +1020,61 @@ function showJoinForm(btn) {
     document.getElementById('bizContainer').style.display = 'none';
     document.getElementById('joinSection').style.display = 'block';
     document.getElementById('joinSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function switchTab(tab) {
+    const addTab = document.getElementById('addTab');
+    const removeTab = document.getElementById('removeTab');
+    const tabs = document.querySelectorAll('.form-tab');
+    tabs.forEach(t => t.classList.remove('active'));
+    if (tab === 'add') {
+        addTab.style.display = '';
+        removeTab.style.display = 'none';
+        tabs[0].classList.add('active');
+    } else {
+        addTab.style.display = 'none';
+        removeTab.style.display = '';
+        tabs[1].classList.add('active');
+    }
+}
+
+async function handleRemoveSubmit(e) {
+    e.preventDefault();
+    const bizName = document.getElementById('r-biz-name').value.trim();
+    const contact = document.getElementById('r-contact').value.trim();
+    const phone   = document.getElementById('r-phone').value.trim();
+    const reason  = document.getElementById('r-reason').value.trim();
+
+    const btn = e.target.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+
+    try {
+        const res = await fetch('https://formspree.io/f/xnjgjrko', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                '_subject': `בקשה להורדת עסק מהרשימה: ${bizName}`,
+                'סוג בקשה': 'הורדת עסק',
+                'שם העסק': bizName,
+                'איש קשר': contact,
+                'טלפון': phone,
+                'סיבת הורדה': reason || '—'
+            })
+        });
+
+        if (res.ok) {
+            document.getElementById('removeSuccessBanner').style.display = 'block';
+            document.getElementById('removeForm').reset();
+        } else {
+            alert('שגיאה בשליחה, אנא נסה שוב.');
+        }
+    } catch {
+        alert('שגיאת חיבור, בדוק את החיבור לאינטרנט ונסה שוב.');
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'שלחו בקשה 📩';
+    }
 }
 
 async function handleJoinSubmit(e) {
