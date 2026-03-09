@@ -307,6 +307,238 @@
             font-weight: 700;
             letter-spacing: 0.5px;
         }
+
+        /* ===== JOIN FORM ===== */
+        .join-section {
+            display: none;
+            padding: 20px 16px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .join-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .join-card h2 {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--navy);
+            margin: 0 0 6px 0;
+        }
+
+        .join-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--card-border);
+            border-radius: 10px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 15px;
+            color: var(--navy);
+            background: #f8fafc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .privacy-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-top: 4px;
+        }
+
+        .privacy-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .privacy-check label {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .privacy-check label strong {
+            color: #1a2744;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1a2744, #2d4a8a);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #2d4a8a, #1a2744);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(26,39,68,0.3);
+        }
+
+        .success-banner {
+            display: none;
+            background: #dcfce7;
+            border: 1.5px solid #86efac;
+            color: #166534;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 16px;
+            line-height: 1.6;
+        }
+
+        .cat-btn.add-btn {
+            background: #ffffff;
+            color: #1a2744;
+            border-color: #ffffff;
+        }
+
+        .cat-btn.add-btn:hover {
+            background: #e8e8e8;
+            border-color: #e8e8e8;
+        }
+
+        .cat-btn.add-btn.active {
+            background: #e8e8e8;
+            border-color: #e8e8e8;
+            box-shadow: 0 2px 12px rgba(255,255,255,0.6);
+        }
+
+        /* ===== PRIVACY POLICY MODAL ===== */
+        .privacy-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .privacy-overlay.open { display: flex; }
+        .privacy-modal {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 32px 28px;
+            position: relative;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+            text-align: right;
+            direction: rtl;
+        }
+        .privacy-modal h2 {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--navy);
+            margin: 0 0 6px;
+        }
+        .privacy-modal h3 {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 24px 0 8px;
+        }
+        .privacy-modal p, .privacy-modal li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #374151;
+        }
+        .privacy-modal ul {
+            padding-right: 20px;
+            margin: 8px 0;
+        }
+        .privacy-modal .updated-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .privacy-close {
+            position: sticky;
+            top: 0;
+            float: left;
+            background: #f1f5f9;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            z-index: 1;
+        }
+        .privacy-close:hover { background: #e2e8f0; }
+        .footer .privacy-link {
+            color: var(--text-muted);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .footer .privacy-link:hover { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -378,9 +610,155 @@
 <div class="categories" id="catBar"></div>
 <div class="container" id="bizContainer"></div>
 
+<!-- ===== JOIN SECTION ===== -->
+<div class="join-section" id="joinSection">
+    <div class="join-card">
+        <h2>➕ הוסיפו את העסק שלכם</h2>
+        <p class="join-subtitle">
+            רוצים להופיע ברשימה? מלאו את הפרטים ונחזור אליכם בהקדם.
+        </p>
+        <form id="joinForm" onsubmit="handleJoinSubmit(event)">
+            <div class="form-group">
+                <label for="f-biz-name">שם העסק *</label>
+                <input type="text" id="f-biz-name" placeholder="למשל: פיצה רומי" required maxlength="100">
+            </div>
+            <div class="form-group">
+                <label for="f-cat">קטגוריה *</label>
+                <select id="f-cat" required>
+                    <option value="" disabled selected>בחרו קטגוריה</option>
+                    <option value="בשר ושיפודים">🥩 בשר ושיפודים</option>
+                    <option value="סושי וחלבי">🍣 סושי, אסיאתי וחלבי</option>
+                    <option value="פיצות">🍕 פיצות</option>
+                    <option value="קצביות">🔪 קצביות</option>
+                    <option value="מינימרקטים וסופרים">🛒 מינימרקטים וסופרים</option>
+                    <option value="פנאי ומתנות">🎈 פנאי ומתנות</option>
+                    <option value="טיפוח ויופי">💅 טיפוח ויופי</option>
+                    <option value="רכב ושירותים">🛠️ רכב ושירותים</option>
+                    <option value="קינוחים ומתוקים">🍰 קינוחים ומתוקים</option>
+                    <option value="אחר">🏪 אחר</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="f-phone">מספר טלפון לקובץ *</label>
+                <input type="tel" id="f-phone" placeholder="050-0000000" required maxlength="20">
+            </div>
+            <div class="form-group">
+                <label for="f-hours">שעות פעילות / תיאור קצר</label>
+                <input type="text" id="f-hours" placeholder="למשל: ראשון–שישי 09:00–20:00" maxlength="150">
+            </div>
+            <div class="form-group">
+                <label for="f-contact">שם איש הקשר *</label>
+                <input type="text" id="f-contact" placeholder="שמך המלא" required maxlength="80">
+            </div>
+            <div class="form-group">
+                <label for="f-notes">הערות נוספות</label>
+                <textarea id="f-notes" placeholder="כל מידע נוסף שתרצו לשתף..." maxlength="500"></textarea>
+            </div>
+            <div class="privacy-check">
+                <input type="checkbox" id="f-privacy" required>
+                <label for="f-privacy">
+                    קראתי ואני מסכים/ה למדיניות הפרטיות.<br>
+                    <strong>הפרטים שאמסור ישמשו אך ורק להצגת העסק שלי באתר קרית שמונה — חזקים ביחד, ולא יועברו לכל גורם שלישי.</strong>
+                </label>
+            </div>
+            <button type="submit" class="btn-submit">שלחו בקשה 📩</button>
+        </form>
+        <div class="success-banner" id="successBanner">
+            ✅ תודה! הפרטים נשלחו בהצלחה.<br>
+            <span style="font-weight:500;font-size:14px;">נעבור על הבקשה ונחזור אליך בהקדם 🙏</span>
+        </div>
+    </div>
+</div>
+
 <div class="footer">
     נעשה עבור תושבי ועסקיי קרית שמונה באהבה <span class="heart">❤️</span> 🇮🇱<br>
-    ע״י אור דהן
+    ע״י אור דהן<br>
+    <span class="privacy-link" onclick="document.getElementById('privacyOverlay').classList.add('open')">מדיניות פרטיות</span>
+</div>
+
+<!-- ===== PRIVACY POLICY MODAL ===== -->
+<div class="privacy-overlay" id="privacyOverlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="privacy-modal">
+        <button class="privacy-close" onclick="document.getElementById('privacyOverlay').classList.remove('open')" aria-label="סגור">✕</button>
+        <h2>מדיניות פרטיות</h2>
+        <p class="updated-date">עודכן לאחרונה: מרץ 2026</p>
+
+        <p>אתר "קרית שמונה – חזקים ביחד" (להלן: <strong>"האתר"</strong>) מופעל על ידי אור דהן (להלן: <strong>"המפעיל"</strong>). מדיניות פרטיות זו מפרטת כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך בעת השימוש באתר, בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 והתקנות שהותקנו מכוחו.</p>
+
+        <h3>1. איזה מידע אנו אוספים</h3>
+        <p>אנו אוספים מידע אישי רק כאשר אתה בוחר לשלוח אותו אלינו באמצעות טופס "הוסיפו את העסק שלכם". המידע הנאסף כולל:</p>
+        <ul>
+            <li>שם העסק</li>
+            <li>קטגוריה</li>
+            <li>מספר טלפון</li>
+            <li>שעות פעילות / תיאור קצר</li>
+            <li>שם איש הקשר</li>
+            <li>כתובת דוא"ל</li>
+            <li>הערות נוספות (אופציונלי)</li>
+        </ul>
+        <p>בנוסף, ייתכן שייאסף מידע טכני באופן אוטומטי, כגון כתובת IP, סוג הדפדפן וזמני גישה, על ידי שירותי צד שלישי המשולבים באתר (ראו סעיף 4).</p>
+
+        <h3>2. למה אנו משתמשים במידע</h3>
+        <p>המידע שנאסף משמש אותנו למטרות הבאות בלבד:</p>
+        <ul>
+            <li>בחינת בקשות הצטרפות של עסקים למדריך</li>
+            <li>יצירת קשר עם בעלי עסקים בנוגע לבקשתם</li>
+            <li>הצגת פרטי עסקים (שם, טלפון, שעות פעילות) באתר לטובת תושבי קרית שמונה</li>
+        </ul>
+        <p>אנו <strong>לא</strong> מוכרים, משכירים או מעבירים את המידע האישי שלך לצדדים שלישיים לצורכי שיווק.</p>
+
+        <h3>3. מסירת מידע לצדדים שלישיים</h3>
+        <p>המידע שנשלח באמצעות הטופס מועבר דרך שירות Formspree לצורך עיבוד הטפסים. המידע מטופל בהתאם למדיניות הפרטיות של Formspree. לא נעביר את המידע שלך לגורמים אחרים, אלא אם כן:</p>
+        <ul>
+            <li>קיבלנו את הסכמתך המפורשת לכך</li>
+            <li>אנו נדרשים לכך על פי חוק או צו בית משפט</li>
+            <li>הדבר נחוץ להגנה על זכויותינו החוקיות</li>
+        </ul>
+
+        <h3>4. שירותי צד שלישי</h3>
+        <p>האתר משתמש בשירותי צד שלישי הבאים:</p>
+        <ul>
+            <li><strong>Cloudflare</strong> – שירותי CDN ואבטחה</li>
+            <li><strong>Formspree</strong> – עיבוד טפסים</li>
+            <li><strong>Google Fonts</strong> – טעינת גופנים (פונט Heebo)</li>
+            <li><strong>Unsplash</strong> – תמונות</li>
+        </ul>
+        <p>לכל אחד משירותים אלה מדיניות פרטיות עצמאית. אנו ממליצים לעיין בהן.</p>
+
+        <h3>5. עוגיות (Cookies)</h3>
+        <p>האתר עצמו אינו מגדיר עוגיות באופן ישיר. עם זאת, שירותי צד שלישי (כגון Cloudflare) עשויים להגדיר עוגיות לצורכי אבטחה וביצועים. באפשרותך לנהל את הגדרות העוגיות בדפדפן שלך בכל עת.</p>
+
+        <h3>6. אבטחת מידע</h3>
+        <p>אנו נוקטים באמצעים סבירים לאבטחת המידע האישי שלך. עם זאת, אין שיטת אחסון או העברת מידע באינטרנט שהיא מאובטחת ב-100%. אנו פועלים כמיטב יכולתנו להגן על המידע שנמסר לנו.</p>
+
+        <h3>7. זכויותיך</h3>
+        <p>בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, עומדות לך הזכויות הבאות:</p>
+        <ul>
+            <li><strong>זכות עיון:</strong> הנך רשאי/ת לבקש לעיין במידע האישי שנשמר אודותיך</li>
+            <li><strong>זכות תיקון:</strong> הנך רשאי/ת לבקש לתקן מידע שגוי או לא מדויק</li>
+            <li><strong>זכות מחיקה:</strong> הנך רשאי/ת לבקש את מחיקת המידע האישי שלך</li>
+            <li><strong>זכות התנגדות:</strong> הנך רשאי/ת להתנגד לשימוש במידע שלך לצרכים מסוימים</li>
+        </ul>
+        <p>לצורך מימוש זכויותיך, ניתן לפנות אלינו באמצעות פרטי הקשר המופיעים בסעיף 10.</p>
+
+        <h3>8. קטינים</h3>
+        <p>האתר אינו מיועד לילדים מתחת לגיל 13 ואיננו אוספים ביודעין מידע אישי מקטינים. אם נודע לך שקטין מסר לנו מידע אישי, אנא צור/צרי קשר ונפעל למחיקת המידע.</p>
+
+        <h3>9. שינויים במדיניות הפרטיות</h3>
+        <p>אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. כל שינוי ייכנס לתוקף עם פרסומו באתר. אנו ממליצים לעיין במדיניות זו מדי פעם. המשך השימוש באתר לאחר עדכון המדיניות מהווה הסכמה לשינויים.</p>
+
+        <h3>10. יצירת קשר</h3>
+        <p>לכל שאלה, בקשה או תלונה בנוגע למדיניות הפרטיות או לשימוש במידע האישי שלך, ניתן לפנות אלינו:</p>
+        <ul>
+            <li><strong>שם:</strong> אור דהן</li>
+            <li><strong>אתר:</strong> קרית שמונה – חזקים ביחד</li>
+        </ul>
+
+        <h3>11. הגבלת אחריות</h3>
+        <p>המידע המוצג באתר (פרטי עסקים, טלפונים, שעות פעילות) מסופק כפי שהוא ("AS IS") ללא אחריות מכל סוג. אנו עושים מאמץ לוודא את דיוק המידע, אך איננו אחראים לשגיאות, אי-דיוקים או לכל נזק שעלול להיגרם מהסתמכות על מידע זה.</p>
+
+        <p style="margin-top:28px;font-size:13px;color:var(--text-muted);border-top:1px solid var(--card-border);padding-top:16px;">מדיניות פרטיות זו אינה מהווה ייעוץ משפטי. מומלץ להתייעץ עם עורך דין לגבי חובות משפטיות ספציפיות.</p>
+    </div>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -465,55 +843,11 @@ const catConfig = {
     }
 };
 
-const businesses = [
-    { name: "נתח קצבים", cat: "butcher", phone: "04-6905032", info: "בשרים טריים" },
-    { name: "מעדני הגליל", cat: "butcher", phone: "04-6943905", info: "פתוח עד 18:00" },
-    { name: "סופר בשר", cat: "butcher", phone: "04-6875544", info: "פתוח עד 20:00" },
-    { name: "SMB Burger", cat: "meat", phone: "052-6164165", info: "המבורגר לילה 00:00-02:00" },
-    { name: "Best Burger", cat: "meat", phone: "077-2016918", info: "11:00-17:00" },
-    { name: "אצל סמדי", cat: "meat", phone: "052-2971225", info: "באגט ושיפודים" },
-    { name: "הקבב של עובד", cat: "meat", phone: "077-7661665", info: "קבב איכותי וטרי" },
-    { name: "רד מיט", cat: "meat", phone: "04-8344913", info: "17:00-01:00" },
-    { name: "יוניקורן Unicorn", cat: "sushi", phone: "04-8457766", info: "סושי ואסיאתי" },
-    { name: "חומוס אליהו", cat: "hummus", phone: "04-621-7602", info: "חומוס טרי יומיום" },
-    { name: "פלאפל עמר", cat: "hummus", phone: "050-431-3104", info: "פלאפל חם וטרי" },
-    { name: "רוקו (Roco)", cat: "sushi", phone: "04-980-5000", info: "מסעדה איטלקית" },
-    { name: "מרכז הפיצה", cat: "pizza", phone: "04-699-7020", info: "יגאל ונת'י" },
-    { name: "פיצה נאפולי", cat: "pizza", phone: "04-690-5105", info: "משלוחים בלבד" },
-    { name: "פיצה העמק", cat: "pizza", phone: "04-958-8992", info: "פתוח למשלוחים" },
-    { name: "הפיצה שלי", cat: "pizza", phone: "04-690-2328", info: "פיצריה מקומית" },
-    { name: "אלימלך אהבתי", cat: "leisure", phone: "052-828-4939", info: "אוכל מוכן ופנאי" },
-    { name: "פרדיס", cat: "leisure", phone: "054-6785552", info: "חנות בגדים" },
-    { name: "המרכז לחד פעמי", cat: "leisure", phone: "04-689-6555", info: "09:00-17:00" },
-    { name: "ימית מארזים", cat: "leisure", phone: "050-2755645", info: "עיצוב אישי" },
-    { name: "שמחה בעיר", cat: "leisure", phone: "052-8375123", info: "09:00-17:00" },
-    { name: "שולחן ערוך", cat: "leisure", phone: "050-3222513", info: "פנאי ומתנות" },
-    { name: "ארלוזורוב סנוקר", cat: "leisure", phone: "050-658-8000", info: "18:00-02:00" },
-    { name: "אבישי נורליאן", cat: "beauty", phone: "052-555-4210", info: "דיקור ורפואה משלימה" },
-    { name: "רויאל גלואו", cat: "beauty", phone: "050-6090999", info: "קוסמטיקה 10:00-20:00" },
-    { name: "טיפוחן", cat: "beauty", phone: "052-5419530", info: "קוסמטיקה ויופי" },
-    { name: "אורי שושן עיצוב גבות", cat: "beauty", phone: "052-6789545", info: "עיצוב גבות" },
-    { name: "אורי סטודיו עיצוב גבות", cat: "beauty", phone: "055-6841003", info: "עיצוב גבות בכל השיטות כולל איפור קבוע" },
-    { name: "ענת קוסמטיקה", cat: "beauty", phone: "052-6066016", info: "טיפוח פנים" },
-    { name: "ענת מכון לקוסמטיקה ויופי", cat: "beauty", phone: "050-2142990", info: "מכון קוסמטיקה ויופי" },
-    { name: "המשלוח המהיר", cat: "service", phone: "050-6444889", info: "שליחויות" },
-    { name: "יריב בן שימול", cat: "service", phone: "054-4858222", info: "ניקיון חלונות ועסקים" },
-    { name: "קיה שירות רכב", cat: "service", phone: "04-694-0398", info: "08:00-16:00" },
-    { name: "המנעולן מוסרי", cat: "service", phone: "050-2412082", info: "09:00-12:00" },
-    { name: "סוד החשמל", cat: "service", phone: "050-3433077", info: "חשמלאי מוסמך" },
-    { name: "מטבחי ליאלו", cat: "service", phone: "052-4379843", info: "נגרייה לייצור ארונות מטבח וריהוט משלים מעץ" },
-    { name: "מינימרקט רסקו", cat: "shop", phone: "04-6951285", info: "06:00-22:00" },
-    { name: "מינימרקט דודו עזיז", cat: "shop", phone: "04-6940376", info: "משלוחים חינם" },
-    { name: "סופר ספיר יובלים", cat: "shop", phone: "04-695-0008", info: "סופרמרקט פעיל" },
-    { name: "ניצת הדובדבן", cat: "shop", phone: "04-694-0030", info: "מוצרי טבע" },
-    { name: "רולדין", cat: "dessert", phone: "04-6361140", info: "מאפים 7:00-15:00" },
-    { name: "מורמלדה", cat: "dessert", phone: "052-5211391", info: "מארזים ומתוקים" },
-    { name: "יאמי יאמי", cat: "dessert", phone: "04-8836660", info: "מתוקים" }
-];
+let businesses = [];
 
 // Build category bar
 const catBar = document.getElementById('catBar');
-catBar.innerHTML = Object.entries(catConfig).map(([id, cfg]) =>
+catBar.innerHTML = `<button class="cat-btn add-btn" onclick="showJoinForm(this)">➕ הוסף עסק</button>` + Object.entries(catConfig).map(([id, cfg]) =>
     `<button class="cat-btn ${id==='all'?'active':''}" onclick="filterData('${id}', this)">${cfg.label}</button>`
 ).join('');
 
@@ -567,11 +901,95 @@ function renderCards(data, catId) {
 function filterData(id, btn) {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    document.getElementById('joinSection').style.display = 'none';
+    document.getElementById('bizContainer').style.display = '';
     const filtered = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
     renderCards(filtered, id);
 }
 
-renderCards(businesses, 'all');
+function showJoinForm(btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('bizContainer').style.display = 'none';
+    document.getElementById('joinSection').style.display = 'block';
+    document.getElementById('joinSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+async function handleJoinSubmit(e) {
+    e.preventDefault();
+    const bizName   = document.getElementById('f-biz-name').value.trim();
+    const cat       = document.getElementById('f-cat').value;
+    const phone     = document.getElementById('f-phone').value.trim();
+    const hours     = document.getElementById('f-hours').value.trim();
+    const contact   = document.getElementById('f-contact').value.trim();
+    const notes     = document.getElementById('f-notes').value.trim();
+
+    const btn = e.target.querySelector('.btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+
+    try {
+        const res = await fetch('https://formspree.io/f/xnjgjrko', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                '_subject': `בקשה להוספת עסק לרשימה: ${bizName}`,
+                'שם העסק': bizName,
+                'קטגוריה': cat,
+                'טלפון לפרסום': phone,
+                'שעות / תיאור': hours || '—',
+                'איש קשר': contact,
+                'הערות': notes || '—'
+            })
+        });
+
+        if (res.ok) {
+            document.getElementById('successBanner').style.display = 'block';
+            document.getElementById('joinForm').reset();
+        } else {
+            alert('שגיאה בשליחה, אנא נסה שוב.');
+        }
+    } catch {
+        alert('שגיאת חיבור, בדוק את החיבור לאינטרנט ונסה שוב.');
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'שלחו בקשה 📩';
+    }
+}
+
+// Parses a single CSV line, respecting double-quoted fields
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    for (const ch of line) {
+        if (ch === '"') { inQuotes = !inQuotes; }
+        else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
+        else { current += ch; }
+    }
+    result.push(current);
+    return result;
+}
+
+async function loadBusinesses() {
+    try {
+        const res = await fetch('businesses.csv');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = await res.text();
+        const lines = text.trim().split('\n').slice(1); // skip header row
+        businesses = lines
+            .filter(l => l.trim())
+            .map(line => {
+                const [name, cat, phone, info] = parseCSVLine(line);
+                return { name, cat, phone, info };
+            });
+        renderCards(businesses, 'all');
+    } catch (err) {
+        console.error('Could not load businesses.csv:', err);
+    }
+}
+
+loadBusinesses();
 </script>
 </body>
 </html>
