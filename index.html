@@ -15,9 +15,9 @@
         body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--navy); text-align: right; padding-bottom: 50px; }
         
         /* Header Section */
-        .header { background: var(--white); padding: 40px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
-        .city-symbol { width: 100%; max-width: 320px; height: auto; margin-bottom: 15px; display: inline-block; }
-        .header h1 { font-size: 28px; margin: 10px 0; color: var(--navy); font-weight: 900; }
+        .header { background: var(--white); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
+        .city-symbol { width: 100%; max-width: 280px; height: auto; margin-bottom: 10px; display: inline-block; }
+        .header h1 { font-size: 26px; margin: 10px 0; color: var(--navy); font-weight: 900; }
         
         /* Navigation Bar */
         .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -29,9 +29,9 @@
         
         /* Hero Section */
         .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .hero-img { width: 100%; height: 200px; background-size: cover; background-position: center; background-color: #f1f5f9; display: block; }
+        .hero-img { width: 100%; height: 220px; background-size: cover; background-position: center; background-color: #f1f5f9; display: block; }
         .hero-text { padding: 25px; text-align: center; }
-        .hero-text h2 { margin: 0; font-size: 24px; font-weight: 800; color: var(--navy); }
+        .hero-text h2 { margin: 0; font-size: 22px; font-weight: 800; color: var(--navy); }
 
         /* Business Cards */
         .card { background: var(--white); border-radius: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
@@ -49,7 +49,7 @@
 <body>
 
 <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/1200px-Kiryat_Shmona_Symbol.svg.png" class="city-symbol" alt="קריית שמונה">
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/512px-Kiryat_Shmona_Symbol.svg.png" class="city-symbol" alt="קריית שמונה">
     <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
 
@@ -63,7 +63,7 @@
 
 <script>
 const catConfig = {
-    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/1200px-Flag_of_Israel.svg.png" },
+    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://images.unsplash.com/photo-1500076656116-558758c991c1?w=800" },
     meat: { label: "🥩 בשר ושיפודים", hero: "המבורגרים ושיפודים", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" },
     sushi: { label: "🍣 סושי וחלבי", hero: "אסיאתי, חומוס וחלבי", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800" },
     pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
