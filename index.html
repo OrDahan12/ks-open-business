@@ -325,16 +325,15 @@
 <div class="header">
     <div class="logo-container">
         <div class="ks-logo">
-            <!-- City Emblem (simplified) -->
-            <svg class="city-emblem" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-                <rect width="60" height="60" rx="8" fill="#e8f4e8"/>
-                <path d="M30 8 L52 18 L52 42 L30 52 L8 42 L8 18 Z" fill="none" stroke="#2d6a2d" stroke-width="2.5"/>
-                <path d="M20 38 L20 28 L30 20 L40 28 L40 38" fill="none" stroke="#2d6a2d" stroke-width="2"/>
-                <rect x="26" y="30" width="8" height="8" rx="1" fill="#2d6a2d"/>
-                <path d="M15 28 L20 28 M40 28 L45 28" stroke="#2d6a2d" stroke-width="1.5"/>
-                <text x="30" y="16" font-size="5" text-anchor="middle" fill="#2d6a2d" font-weight="bold">עיריית</text>
-                <text x="30" y="48" font-size="4.5" text-anchor="middle" fill="#2d6a2d" font-weight="bold">קרית-שמונה</text>
-            </svg>
+            <!-- Israeli Flag Emblem -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 10px;background:#f0f4ff;border-radius:10px;border:2px solid #0038b8;">
+                <div style="width:34px;height:4px;background:#0038b8;border-radius:2px;"></div>
+                <svg viewBox="0 0 40 34" width="34" height="28" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="20,2 37,32 3,32" fill="none" stroke="#0038b8" stroke-width="2.8"/>
+                    <polygon points="20,32 3,2 37,2" fill="none" stroke="#0038b8" stroke-width="2.8"/>
+                </svg>
+                <div style="width:34px;height:4px;background:#0038b8;border-radius:2px;"></div>
+            </div>
 
             <!-- "קריית שמונה" text in purple like official logo -->
             <div>
@@ -431,10 +430,10 @@ const catConfig = {
         hero: "קוסמטיקה וטיפוח",
         emoji: "💅",
         gradient: "linear-gradient(135deg, #4a044e, #701a75)",
-        imgUrl: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
     },
     service: {
-        label: "🛠️ רכב ושירותים",
+        label: "🛠️ שירותים לבית ועסק",
         hero: "מוסכים ושירותי תחזוקה",
         emoji: "🔧",
         gradient: "linear-gradient(135deg, #1c1917, #292524)",
@@ -446,6 +445,13 @@ const catConfig = {
         emoji: "🍰",
         gradient: "linear-gradient(135deg, #831843, #9d174d)",
         imgUrl: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
+    },
+    hummus: {
+        label: "🥙 חומוס ופלאפל",
+        hero: "חומוס, פלאפל ואוכל רחוב",
+        emoji: "🥙",
+        gradient: "linear-gradient(135deg, #713f12, #92400e)",
+        imgUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80"
     }
 };
 
@@ -459,8 +465,8 @@ const businesses = [
     { name: "הקבב של עובד", cat: "meat", phone: "077-7661665", info: "קבב איכותי וטרי" },
     { name: "רד מיט", cat: "meat", phone: "04-8344913", info: "17:00-01:00" },
     { name: "יוניקורן Unicorn", cat: "sushi", phone: "04-8457766", info: "סושי ואסיאתי" },
-    { name: "חומוס אליהו", cat: "sushi", phone: "04-621-7602", info: "חומוס טרי יומיום" },
-    { name: "פלאפל עמר", cat: "sushi", phone: "050-431-3104", info: "פלאפל חם וטרי" },
+    { name: "חומוס אליהו", cat: "hummus", phone: "04-621-7602", info: "חומוס טרי יומיום" },
+    { name: "פלאפל עמר", cat: "hummus", phone: "050-431-3104", info: "פלאפל חם וטרי" },
     { name: "רוקו (Roco)", cat: "sushi", phone: "04-980-5000", info: "מסעדה איטלקית" },
     { name: "מרכז הפיצה", cat: "pizza", phone: "04-699-7020", info: "יגאל ונת'י" },
     { name: "פיצה נאפולי", cat: "pizza", phone: "04-690-5105", info: "משלוחים בלבד" },
