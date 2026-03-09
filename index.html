@@ -7,8 +7,8 @@
     <style>
         :root { 
             --navy: #1e293b; 
-            --gold: #b59410; 
-            --bg: #f8fafc; 
+            --gold: #c5a059; 
+            --bg: #fdfdfd; 
             --white: #ffffff;
             --text: #334155;
         }
@@ -16,8 +16,7 @@
         
         /* Header */
         .header { background: var(--white); padding: 30px 20px; text-align: center; border-bottom: 3px solid var(--gold); }
-        .city-logo-container { width: 100%; max-width: 320px; margin: 0 auto 15px; }
-        .city-logo-img { width: 100%; height: auto; display: block; }
+        .city-logo { width: 100%; max-width: 300px; height: auto; margin-bottom: 10px; }
         .header h1 { font-size: 28px; margin: 10px 0; color: var(--navy); font-weight: 900; }
         
         /* Navigation */
@@ -29,21 +28,20 @@
         .container { padding: 20px; max-width: 650px; margin: 0 auto; }
         
         /* Hero Category Card */
-        .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .hero-img { width: 100%; height: 180px; background-size: cover; background-position: center; }
-        .hero-text { padding: 20px; text-align: center; background: var(--white); }
-        .hero-text h2 { margin: 0; font-size: 22px; font-weight: 800; color: var(--navy); }
+        .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25 Hebrewpx; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .hero-img { width: 100%; height: 200px; background-size: cover; background-position: center; background-color: #f1f5f9; }
+        .hero-text { padding: 25px; text-align: center; }
+        .hero-text h2 { margin: 0; font-size: 24px; font-weight: 800; color: var(--navy); }
 
         /* Business Card */
         .card { background: var(--white); border-radius: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
         .card-content { padding: 20px; }
-        .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 5px 0; color: var(--navy); }
+        .biz-name { font-size: 20px; font-weight: 800; margin: 0 0 5px 0; color: var(--navy); }
         .biz-info { font-size: 15px; color: #64748b; }
         
-        /* Phone Button - Clean & Elegant */
-        .btn-call { display: flex; align-items: center; justify-content: center; background: #fcfcfc; color: var(--navy); text-decoration: none; padding: 15px; font-weight: 800; font-size: 18px; border-top: 1px solid #f1f5f9; gap: 10px; transition: 0.2s; }
-        .btn-call:hover { background: #f8fafc; color: var(--gold); }
-        .btn-call span { font-size: 20px; }
+        /* Phone Button */
+        .btn-call { display: flex; align-items: center; justify-content: center; background: #fafafa; color: var(--navy); text-decoration: none; padding: 16px; font-weight: 800; font-size: 18px; border-top: 1px solid #f1f5f9; gap: 10px; transition: 0.2s; }
+        .btn-call:hover { background: #fdfdfd; color: var(--gold); }
 
         .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--navy); }
     </style>
@@ -51,9 +49,7 @@
 <body>
 
 <div class="header">
-    <div class="city-logo-container">
-        <img src="Screenshot%202026-03-09%20at%2016.07.25.png" alt="קריית שמונה" class="city-logo-img" onerror="this.src='https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/1200px-Kiryat_Shmona_Symbol.svg.png'">
-    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/he/thumb/3/30/Kiryat_Shmona_Symbol.svg/1200px-Kiryat_Shmona_Symbol.svg.png" alt="קריית שמונה" class="city-logo">
     <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
 
@@ -67,7 +63,7 @@
 
 <script>
 const catConfig = {
-    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://images.unsplash.com/photo-1571221884488-b2a56e7e012e?w=800" },
+    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/800px-Flag_of_Israel.svg.png" },
     meat: { label: "🥩 בשר ושיפודים", hero: "המבורגרים ושיפודים", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" },
     sushi: { label: "🍣 סושי וחלבי", hero: "אסיאתי, חומוס וחלבי", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800" },
     pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
@@ -135,7 +131,7 @@ function renderCards(data, catId) {
                             <h2 class="biz-name">${b.name}</h2>
                             <div class="biz-info">${b.info}</div>
                          </div>` + 
-                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call"><span>📞</span> חיוג: ${b.phone}</a>` : '');
+                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 חיוג: ${b.phone}</a>` : '');
         container.appendChild(card);
     });
 }
