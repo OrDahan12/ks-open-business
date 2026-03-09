@@ -371,10 +371,10 @@
 
 <div class="footer">
     נעשה עבור תושבי ועסקיי קרית שמונה באהבה <span class="heart">❤️</span> 🇮🇱<br>
-    ע״י אור דהן | <a href="mailto:or.ohayonn@gmail.com">or.ohayonn@gmail.com</a>
+    ע״י אור דהן | <a href="/cdn-cgi/l/email-protection#d4bba6fabbbcb5adbbbaba94b3b9b5bdb8fab7bbb9"><span class="__cf_email__" data-cfemail="b9d6cb97d6d1d8c0d6d7d7f9ded4d8d0d597dad6d4">[email&#160;protected]</span></a>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Hero images using Unsplash with reliable URLs + emoji fallbacks
 const catConfig = {
     all: {
@@ -396,7 +396,7 @@ const catConfig = {
         hero: "אסיאתי, חומוס וחלבי",
         emoji: "🍣",
         gradient: "linear-gradient(135deg, #064e3b, #065f46)",
-        imgUrl: "https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80"
     },
     pizza: {
         label: "🍕 פיצות",
@@ -410,7 +410,7 @@ const catConfig = {
         hero: "קצביות ובשר טרי",
         emoji: "🥩",
         gradient: "linear-gradient(135deg, #450a0a, #7f1d1d)",
-        imgUrl: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&q=80"
     },
     shop: {
         label: "🛒 מינימרקטים וסופרים",
@@ -431,7 +431,7 @@ const catConfig = {
         hero: "קוסמטיקה וטיפוח",
         emoji: "💅",
         gradient: "linear-gradient(135deg, #4a044e, #701a75)",
-        imgUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80"
+        imgUrl: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
     },
     service: {
         label: "🛠️ רכב ושירותים",
@@ -439,6 +439,13 @@ const catConfig = {
         emoji: "🔧",
         gradient: "linear-gradient(135deg, #1c1917, #292524)",
         imgUrl: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=800&q=80"
+    },
+    dessert: {
+        label: "🍰 קינוחים ומתוקים",
+        hero: "קינוחים, מאפים ומתוקים",
+        emoji: "🍰",
+        gradient: "linear-gradient(135deg, #831843, #9d174d)",
+        imgUrl: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&q=80"
     }
 };
 
@@ -478,7 +485,10 @@ const businesses = [
     { name: "מינימרקט רסקו", cat: "shop", phone: "04-6951285", info: "06:00-22:00" },
     { name: "מינימרקט דודו עזיז", cat: "shop", phone: "04-6940376", info: "משלוחים חינם" },
     { name: "סופר ספיר יובלים", cat: "shop", phone: "04-695-0008", info: "סופרמרקט פעיל" },
-    { name: "ניצת הדובדבן", cat: "shop", phone: "04-694-0030", info: "מוצרי טבע" }
+    { name: "ניצת הדובדבן", cat: "shop", phone: "04-694-0030", info: "מוצרי טבע" },
+    { name: "רולדין", cat: "dessert", phone: "", info: "מאפים 7:00-15:00" },
+    { name: "מורמלדה", cat: "dessert", phone: "052-5211391", info: "מארזים ומתוקים" },
+    { name: "יאמי יאמי", cat: "dessert", phone: "04-8836660", info: "מתוקים" }
 ];
 
 // Build category bar
@@ -535,13 +545,4 @@ function renderCards(data, catId) {
 }
 
 function filterData(id, btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filtered = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
-    renderCards(filtered, id);
-}
-
-renderCards(businesses, 'all');
-</script>
-</body>
-</html>
+    document.querySelectorAll('.cat-btn').forEach(b =
