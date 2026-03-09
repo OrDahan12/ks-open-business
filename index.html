@@ -6,49 +6,50 @@
     <title>ק"ש - חזקים ביחד</title>
     <style>
         :root { 
-            --navy: #1e293b; /* כחול עמוק יוקרתי */
-            --gold: #b59410; /* זהב עמוק ובולט */
-            --bg: #f8fafc; /* רקע אוף-ווייט נעים */
+            --navy: #1e293b; 
+            --gold: #b59410; 
+            --cream: #f8f5f0; 
             --white: #ffffff;
-            --text-main: #334155;
+            --text: #334155;
         }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--text-main); text-align: right; padding-bottom: 50px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--cream); margin: 0; color: var(--text); text-align: right; padding-bottom: 50px; }
         
-        /* Header עם הסמל שלך */
-        .header { background: var(--white); padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
-        .city-logo { width: 100%; max-width: 250px; height: auto; border-radius: 12px; margin-bottom: 15px; }
-        .header h1 { font-size: 30px; margin: 10px 0; color: var(--navy); font-weight: 900; }
+        /* Header */
+        .header { background: var(--white); padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
+        .city-logo { width: 100%; max-width: 350px; height: auto; margin-bottom: 15px; }
+        .header h1 { font-size: 32px; margin: 10px 0; color: var(--navy); font-weight: 900; }
         
-        /* Categories Navigation */
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 12px; background: var(--navy); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        /* Navigation */
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 12px; background: var(--navy); position: sticky; top: 0; z-index: 100; }
         .categories::-webkit-scrollbar { display: none; }
-        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 12px 24px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 15px; }
+        .cat-btn { background: rgba(255,255,255,0.1); color: white; padding: 12px 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); font-weight: 700; white-space: nowrap; cursor: pointer; transition: 0.3s; font-size: 15px; }
         .cat-btn.active { background: var(--gold); color: white; border-color: var(--gold); }
 
         .container { padding: 20px; max-width: 650px; margin: 0 auto; }
         
         /* Hero Category Card */
-        .hero-card { background: var(--white); color: var(--navy); border-radius: 20px; margin-bottom: 25px; padding: 25px; text-align: center; border: 2px solid var(--gold); }
-        .hero-card h2 { margin: 0; font-size: 22px; font-weight: 800; }
+        .hero-card { background: var(--white); border-radius: 20px; margin-bottom: 25px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .hero-img { width: 100%; height: 200px; background-size: cover; background-position: center; }
+        .hero-text { padding: 20px; text-align: center; background: var(--white); }
+        .hero-text h2 { margin: 0; font-size: 24px; font-weight: 800; color: var(--navy); }
 
         /* Business Card */
-        .card { background: var(--white); border-radius: 16px; margin-bottom: 18px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+        .card { background: var(--white); border-radius: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; overflow: hidden; }
         .card-content { padding: 20px; }
-        .biz-name { font-size: 20px; font-weight: 800; margin: 0 0 6px 0; color: var(--navy); }
-        .biz-info { font-size: 15px; color: #64748b; font-weight: 500; }
+        .biz-name { font-size: 20px; font-weight: 800; margin: 0 0 5px 0; color: var(--navy); }
+        .biz-info { font-size: 15px; color: #64748b; }
         
-        /* Phone Button - Large and Clear */
-        .btn-call { display: flex; align-items: center; justify-content: center; background: #f8fafc; color: var(--navy); text-decoration: none; padding: 16px; font-weight: 900; font-size: 19px; border-top: 2px solid var(--gold); transition: 0.2s; gap: 10px; }
-        .btn-call span { color: var(--gold); font-size: 22px; }
-        .btn-call:active { background: #e2e8f0; }
+        /* Phone Button */
+        .btn-call { display: flex; align-items: center; justify-content: center; background: var(--white); color: var(--gold); text-decoration: none; padding: 16px; font-weight: 800; font-size: 19px; border-top: 2px solid var(--cream); gap: 10px; }
+        .btn-call:hover { background: var(--cream); }
 
-        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--navy); background: white; border-top: 5px solid var(--gold); }
+        .footer { text-align: center; padding: 40px 20px; font-weight: 800; color: var(--navy); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <img src="https://i.postimg.cc/mD4mF55W/Kiryat-Shmona-Symbol.png" alt="קריית שמונה" class="city-logo">
+    <img src="Screenshot 2026-03-09 at 16.07.25.png" alt="קרית שמונה" class="city-logo">
     <h1>ק"ש - חזקים ביחד 🇮🇱</h1>
 </div>
 
@@ -57,42 +58,41 @@
 <div class="container" id="bizContainer"></div>
 
 <div class="footer">
-    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>חזקים יחד! 🇮🇱
+    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>חזקים ביחד! 🇮🇱
 </div>
 
 <script>
 const catConfig = {
-    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם" },
-    meat: { label: "🥩 בשר ושיפודים", hero: "המבורגרים, בשרים ועל האש" },
-    sushi: { label: "🍣 סושי, חלבי וחומוס", hero: "אסיאתי, חומוס, פלאפל וחלבי" },
-    pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות" },
-    butcher: { label: "🔪 קצביות", hero: "קצביות ובשר טרי" },
-    leisure: { label: "🎈 פנאי ומתנות", hero: "בילוי, אופנה ומתנות" },
-    beauty: { label: "💅 טיפוח ויופי", hero: "טיפוח פנים, גבות וגוף" },
-    service: { label: "🛠️ רכב ושירותים", hero: "מוסכים, חשמל ותחזוקה" },
-    shop: { label: "🛒 קניות וסופרים", hero: "סופרמרקטים ומוצרי צריכה" }
+    all: { label: "הכל", hero: "כל העסקים שפתוחים עבורכם", img: "https://images.unsplash.com/photo-1571221884488-b2a56e7e012e?w=800" },
+    meat: { label: "🥩 בשר ושיפודים", hero: "המבורגרים ושיפודים", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800" },
+    sushi: { label: "🍣 סושי וחלבי", hero: "אסיאתי, חומוס וחלבי", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800" },
+    pizza: { label: "🍕 פיצות", hero: "פיצריות פעילות", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
+    butcher: { label: "🔪 קצביות", hero: "קצביות ובשר טרי", img: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800" },
+    leisure: { label: "🎈 פנאי ומתנות", hero: "פנאי, מתנות ועיצוב", img: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=800" },
+    beauty: { label: "💅 טיפוח ויופי", hero: "קוסמטיקה וטיפוח", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800" },
+    service: { label: "🛠️ רכב ושירותים", hero: "מוסכים ושירותי תחזוקה", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800" },
+    shop: { label: "🛒 קניות", hero: "סופרמרקטים וקניות", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800" }
 };
 
 const businesses = [
-    { name: "נתח קצבים", cat: "butcher", phone: "04-6905032", info: "בשרים טריים ואיכותיים" },
+    { name: "נתח קצבים", cat: "butcher", phone: "04-6905032", info: "בשרים טריים" },
     { name: "מעדני הגליל", cat: "butcher", phone: "04-6943905", info: "פתוח עד 18:00" },
     { name: "סופר בשר", cat: "butcher", phone: "04-6875544", info: "פתוח עד 20:00" },
     { name: "SMB Burger", cat: "meat", phone: "052-6164165", info: "המבורגר לילה 00:00-02:00" },
     { name: "Best Burger", cat: "meat", phone: "077-2016918", info: "11:00-17:00" },
     { name: "אצל סמדי", cat: "meat", phone: "052-2971225", info: "באגט ושיפודים" },
     { name: "הקבב של עובד", cat: "meat", phone: "077-7661665", info: "קבב איכותי וטרי" },
-    { name: "רד מיט (Red Meat)", cat: "meat", phone: "04-8344913", info: "17:00-01:00" },
+    { name: "רד מיט", cat: "meat", phone: "04-8344913", info: "17:00-01:00" },
     { name: "יוניקורן Unicorn", cat: "sushi", phone: "04-8457766", info: "סושי ואסיאתי" },
     { name: "חומוס אליהו", cat: "sushi", phone: "04-621-7602", info: "חומוס טרי יומיום" },
     { name: "פלאפל עמר", cat: "sushi", phone: "050-431-3104", info: "פלאפל חם וטרי" },
-    { name: "בר בריא", cat: "sushi", phone: "04-8862424", info: "שייקים ומיצים" },
     { name: "רוקו (Roco)", cat: "sushi", phone: "04-980-5000", info: "מסעדה איטלקית" },
-    { name: "מרכז הפיצה", cat: "pizza", phone: "04-699-7020", info: "יגאל ונת'י 12:00-20:00" },
+    { name: "מרכז הפיצה", cat: "pizza", phone: "04-699-7020", info: "יגאל ונת'י" },
     { name: "פיצה נאפולי", cat: "pizza", phone: "04-690-5105", info: "משלוחים בלבד" },
     { name: "פיצה העמק", cat: "pizza", phone: "04-958-8992", info: "פתוח למשלוחים" },
     { name: "הפיצה שלי", cat: "pizza", phone: "04-690-2328", info: "פיצריה מקומית" },
-    { name: "אלימלך אהבתי", cat: "leisure", phone: "052-828-4939", info: "אוכל מוכן ובילוי 08:30-19:00" },
-    { name: "פרדיס", cat: "leisure", phone: "054-6785552", info: "חנות בגדים 10:00-18:00" },
+    { name: "אלימלך אהבתי", cat: "leisure", phone: "052-828-4939", info: "אוכל מוכן ופנאי" },
+    { name: "פרדיס", cat: "leisure", phone: "054-6785552", info: "חנות בגדים" },
     { name: "המרכז לחד פעמי", cat: "leisure", phone: "04-689-6555", info: "09:00-17:00" },
     { name: "ימית מארזים", cat: "leisure", phone: "050-2755645", info: "עיצוב אישי" },
     { name: "שמחה בעיר", cat: "leisure", phone: "052-8375123", info: "09:00-17:00" },
@@ -102,14 +102,13 @@ const businesses = [
     { name: "טיפוחן", cat: "beauty", phone: "052-5419530", info: "קוסמטיקה ויופי" },
     { name: "אורי עיצוב גבות", cat: "beauty", phone: "052-6789545", info: "עיצוב גבות" },
     { name: "ענת קוסמטיקה", cat: "beauty", phone: "052-6066016", info: "טיפוח פנים" },
-    { name: "המשלוח המהיר", cat: "service", phone: "050-6444889", info: "שליחויות 10:00-00:00" },
+    { name: "המשלוח המהיר", cat: "service", phone: "050-6444889", info: "שליחויות" },
     { name: "יריב בן שימול", cat: "service", phone: "054-4858222", info: "ניקיון חלונות ועסקים" },
     { name: "קיה שירות רכב", cat: "service", phone: "04-694-0398", info: "08:00-16:00" },
     { name: "המנעולן מוסרי", cat: "service", phone: "050-2412082", info: "09:00-12:00" },
     { name: "סוד החשמל", cat: "service", phone: "050-3433077", info: "חשמלאי מוסמך" },
     { name: "מינימרקט רסקו", cat: "shop", phone: "04-6951285", info: "06:00-22:00" },
     { name: "מינימרקט דודו עזיז", cat: "shop", phone: "04-6940376", info: "משלוחים חינם" },
-    { name: "מינימרקט לב העיר", cat: "shop", phone: "052-8010992", info: "משלוחים בעיר" },
     { name: "סופר ספיר יובלים", cat: "shop", phone: "04-695-0008", info: "סופרמרקט פעיל" },
     { name: "ניצת הדובדבן", cat: "shop", phone: "04-694-0030", info: "מוצרי טבע" }
 ];
@@ -121,7 +120,10 @@ catBar.innerHTML = Object.entries(catConfig).map(([id, cfg]) =>
 
 function renderCards(data, catId) {
     const container = document.getElementById('bizContainer');
-    container.innerHTML = `<div class="hero-card"><h2>${catConfig[catId].hero}</h2></div>`;
+    container.innerHTML = `<div class="hero-card">
+                            <div class="hero-img" style="background-image: url('${catConfig[catId].img}')"></div>
+                            <div class="hero-text"><h2>${catConfig[catId].hero}</h2></div>
+                           </div>`;
     data.forEach(b => {
         const card = document.createElement('div');
         card.className = 'card';
@@ -129,7 +131,7 @@ function renderCards(data, catId) {
                             <h2 class="biz-name">${b.name}</h2>
                             <div class="biz-info">${b.info}</div>
                          </div>` + 
-                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call"><span>📞</span> חיוג: ${b.phone}</a>` : '');
+                         (b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 חיוג: ${b.phone}</a>` : '');
         container.appendChild(card);
     });
 }
