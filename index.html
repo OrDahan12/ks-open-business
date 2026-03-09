@@ -7,26 +7,20 @@
     <style>
         :root { --wolt-blue: #00c2e8; --bg: #f3f5f6; --text: #202125; }
         body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--text); padding-bottom: 30px; }
-        
         .header { background: white; padding: 25px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header h1 { font-size: 24px; margin: 0; color: var(--wolt-blue); font-weight: 900; }
         .header p { margin: 5px 0 0; font-size: 14px; color: #666; }
-        
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; border-bottom: 1px solid #eee; sticky: top; top: 0; z-index: 100; }
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
         .categories::-webkit-scrollbar { display: none; }
         .cat-btn { background: #f0f1f2; padding: 10px 18px; border-radius: 25px; border: none; white-space: nowrap; font-weight: 700; cursor: pointer; transition: 0.2s; font-size: 14px; }
         .cat-btn.active { background: var(--wolt-blue); color: white; }
-
         .container { padding: 15px; display: grid; gap: 15px; max-width: 600px; margin: 0 auto; }
         .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .card-content { padding: 16px; }
         .biz-category { font-size: 11px; color: var(--wolt-blue); font-weight: 800; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.5px; }
         .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 8px 0; color: #000; }
         .biz-info { font-size: 14px; color: #444; line-height: 1.5; }
-        .biz-info b { color: #00a33c; }
-
         .btn-call { display: flex; align-items: center; justify-content: center; background: var(--wolt-blue); color: white; text-decoration: none; padding: 15px; font-weight: 800; gap: 10px; border-radius: 0 0 16px 16px; font-size: 16px; }
-        .no-results { text-align: center; padding: 40px; color: #888; grid-column: 1/-1; }
     </style>
 </head>
 <body>
@@ -36,78 +30,34 @@
     <p>עסקים פעילים בקריית שמונה בזמן המלחמה</p>
 </div>
 
-<div class="categories" id="catBar">
-    </div>
-
-<div class="container" id="bizContainer">
-    </div>
+<div class="categories" id="catBar"></div>
+<div class="container" id="bizContainer"></div>
 
 <script>
 const businesses = [
-    // --- המבורגר ובשר ---
     { name: "Best Burger", cat: "המבורגר ובשר", hours: "11:00-17:00", phone: "0772016918", info: "המבורגר וקריספי צ'יקן, כשר למהדרין." },
     { name: "אצל סמדי", cat: "המבורגר ובשר", hours: "פעיל", phone: "0522971225", info: "באגטים, שיפודים ובשרים. מבצע לחיילים: באגט+שתיה ב-50 ש\"ח." },
     { name: "Smb.burger", cat: "המבורגר ובשר", hours: "00:00-02:00", phone: "", info: "פתוח בחמישי ומוצ\"ש עד 01:00." },
-    { name: "רד מיט (Red Meat)", cat: "המבורגר ובשר", hours: "17:00-01:00", phone: "", info: "פתוח ימים א'-ה'." },
-    { name: "פלאפל עמר", cat: "המבורגר ובשר", hours: "08:30-15:00", phone: "", info: "פלאפל חם וטרי." },
-    { name: "מעדני הגליל (קצביה)", cat: "המבורגר ובשר", hours: "עד 18:00", phone: "046943905", info: "בשרים טריים, משלוחים עד בית הלקוח." },
-    { name: "נתח קצבים", cat: "המבורגר ובשר", hours: "פעיל", phone: "", info: "קצביה ובשרים איכותיים." },
-
-    // --- פיצריות ---
     { name: "פיצה נאפולי", cat: "פיצריות", hours: "16:00-23:30", phone: "", info: "עובדים במתכונת משלוחים בלבד." },
-    { name: "מרכז הפיצה (יגאל ונת'י)", cat: "פיצריות", hours: "12:00-20:00", phone: "046997020", info: "יש משלוחים, פיצה ותיקה ברסקו." },
-    { name: "פיצה העמק / הפיצה שלי", cat: "פיצריות", hours: "12:00-23:00", phone: "", info: "פתוחים למשלוחים ואיסוף." },
-
-    // --- אסיאתי ---
-    { name: "Unicorn (יוניקורן)", cat: "אסיאתי", hours: "עד 22:00", phone: "048457766", info: "סושי, ווק ותפריט אסיאתי חדש. משלוחים לק"ש והסביבה." },
-
-    // --- קינוחים ומתוקים ---
-    { name: "רולדין", cat: "קינוחים ומתוקים", hours: "07:00-15:00", phone: "", info: "קפה, מאפים ולחמים טריים." },
-    { name: "בר בריא", cat: "קינוחים ומתוקים", hours: "09:00-14:00", phone: "048862424", info: "שייקים, מיצים וקערות אסאי." },
-    { name: "מורמלדה (Mormelada)", cat: "קינוחים ומתוקים", hours: "פעיל", phone: "", info: "מתנות ודברים טובים." },
-
-    // --- סופרים ומזון ---
+    { name: "Unicorn (יוניקורן)", cat: "אסיאתי", hours: "עד 22:00", phone: "048457766", info: "סושי ותפריט אסיאתי חדש. משלוחים לכל האיזור." },
     { name: "מינימרקט לב העיר", cat: "סופרים", hours: "06:00-19:00", phone: "0528010992", info: "משלוחים חינם בתוך העיר (ברק)." },
-    { name: "ניצת הדובדבן", cat: "סופרים", hours: "08:00-19:00", phone: "", info: "מוצרי טבע ובריאות, שוק רסקו." },
-    { name: "סופר ספיר יובלים", cat: "סופרים", hours: "06:45-20:00", phone: "", info: "סופרמרקט פעיל בשכונת יובלים." },
-    { name: "מינימרקט רסקו", cat: "סופרים", hours: "06:00-22:00", phone: "", info: "פתוח עד מאוחר, יש משלוחים." },
-    { name: "מינימרקט דודו", cat: "סופרים", hours: "פעיל", phone: "046940376", info: "משלוחים חינם." },
-    { name: "סופר בשר", cat: "סופרים", hours: "עד 20:00", phone: "", info: "פתוח כל יום, יש משלוחים." },
-    { name: "מינימרקט ברכת השם", cat: "סופרים", hours: "פעיל", phone: "", info: "ממוקם בשפרינצק." },
-
-    // --- שירותים לבית ורכב ---
-    { name: "המנעולן מוסרי", cat: "שירותים", hours: "09:00-12:00", phone: "0502412082", info: "מנעולנות ואופניים. זמין לחירום 24/7." },
-    { name: "סוד החשמל", cat: "שירותים", hours: "24/7", phone: "", info: "כל סוגי עבודות החשמל זמינים בכל שעה." },
-    { name: "קיה קריית שמונה", cat: "שירותים", hours: "08:00-16:00", phone: "", info: "שירות ומכירה. ימי שישי עד 12:00 בתיאום." },
-    { name: "ניקוי חלונות (יריב בן שימול)", cat: "שירותים", hours: "פעיל", phone: "", info: "ניקיון בגובה, מעקות וזכוכיות לעסקים ובתים." },
-    { name: "אביזרים לרכב (קורן ירמיהו)", cat: "שירותים", hours: "פעיל", phone: "0538302104", info: "התקנות ומשלוחים של אביזרי רכב." },
-    { name: "רפואה שלמה (אבישי)", cat: "שירותים", hours: "08:00-15:00", phone: "", info: "דיקור סיני, עיסויים וטיפולי הרגעת הגוף והנפש." }
+    { name: "המנעולן מוסרי", cat: "שירותים", hours: "09:00-12:00", phone: "0502412082", info: "מנעולנות ואופניים. זמין לחירום 24/7." }
 ];
 
-// יצירת קטגוריות
-const categories = ["הכל", "המבורגר ובשר", "פיצריות", "אסיאתי", "קינוחים ומתוקים", "סופרים", "שירותים"];
+const categories = ["הכל", ...new Set(businesses.map(b => b.cat))];
 const catBar = document.getElementById('catBar');
-catBar.innerHTML = categories.map(cat => 
-    <button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>
-).join('');
+catBar.innerHTML = categories.map(cat => `<button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>`).join('');
 
 function renderCards(data) {
     const container = document.getElementById('bizContainer');
-    if (data.length === 0) {
-        container.innerHTML = '<div class="no-results">לא נמצאו עסקים בקטגוריה זו</div>';
-        return;
-    }
     container.innerHTML = data.map(b => `
         <div class="card">
             <div class="card-content">
                 <div class="biz-category">${b.cat}</div>
                 <h2 class="biz-name">${b.name}</h2>
-                <div class="biz-info">
-                    ⏰ שעות: <b>${b.hours}</b><br>
-                    ${b.info}
-                </div>
+                <div class="biz-info">⏰ שעות: <b>${b.hours}</b><br>${b.info}</div>
             </div>
-            ${b.phone ? <a href="tel:${b.phone}" class="btn-call">📞 התקשר להזמנה</a> : '<div style="padding:15px; text-align:center; color:#888; font-size:13px; border-top:1px solid #eee;">פרטי קשר בפוסט המקורי</div>'}
+            ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר להזמנה</a>` : ''}
         </div>
     `).join('');
 }
@@ -115,12 +65,10 @@ function renderCards(data) {
 function filterData(cat, btn) {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filtered = cat === 'הכל' ? businesses : businesses.filter(b => b.cat === cat);
-    renderCards(filtered);
+    renderCards(cat === 'הכל' ? businesses : businesses.filter(b => b.cat === cat));
 }
 
 renderCards(businesses);
 </script>
-
 </body>
 </html>
