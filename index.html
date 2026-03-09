@@ -3,136 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ק"ש פתוחה - הכל במקום אחד</title>
+    <title>ק"ש פתוחה - חזקים יחד</title>
     <style>
         :root { --wolt-blue: #00c2e8; --bg: #f3f5f6; --text: #202125; }
         body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; color: var(--text); text-align: right; padding-bottom: 50px; }
         
-        /* Header עם דגלים */
-        .header { background: white; padding: 25px 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header h1 { font-size: 26px; margin: 0; color: var(--wolt-blue); font-weight: 900; letter-spacing: -0.5px; }
-        .header p { margin: 5px 0 0; font-size: 14px; color: #666; }
-        
-        .header-content { display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .flag-icon { font-size: 26px; }
+        /* Header & Symbols */
+        .header { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-content { display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .header h1 { font-size: 26px; margin: 0; color: var(--wolt-blue); font-weight: 900; }
+        .flag { font-size: 24px; }
 
-        /* קרוסלת קטגוריות */
-        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        /* Categories Bar */
+        .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
         .categories::-webkit-scrollbar { display: none; }
         .cat-btn { background: #f0f1f2; padding: 10px 18px; border-radius: 25px; border: none; font-weight: 700; white-space: nowrap; cursor: pointer; font-size: 14px; }
         .cat-btn.active { background: var(--wolt-blue); color: white; }
 
-        /* כרטיסיות עסקים */
-        .container { padding: 15px; display: grid; gap: 15px; max-width: 600px; margin: 0 auto; }
-        .card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; }
-        .card-img { width: 100%; height: 120px; background-size: cover; background-position: center; background-color: #eee; }
+        /* Business Cards */
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        .card { background: white; border-radius: 16px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .card-img { width: 100%; height: 140px; background-size: cover; background-position: center; background-color: #eee; }
         .card-content { padding: 16px; }
-        .biz-category { font-size: 11px; color: var(--wolt-blue); font-weight: 800; text-transform: uppercase; margin-bottom: 5px; }
+        .biz-cat { font-size: 11px; color: var(--wolt-blue); font-weight: 800; margin-bottom: 5px; }
         .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 8px 0; color: #000; }
         .biz-info { font-size: 14px; color: #5e5e5e; line-height: 1.5; }
-        .biz-info b { color: #00a33c; }
-
-        /* כפתור חיוג */
+        
         .btn-call { display: flex; align-items: center; justify-content: center; background: var(--wolt-blue); color: white; text-decoration: none; padding: 14px; font-weight: 800; gap: 8px; border-radius: 0 0 16px 16px; font-size: 16px; }
-
-        /* Footer הקדשה */
-        .footer { text-align: center; color: #666; font-size: 13px; margin-top: 30px; font-weight: 600; padding: 15px; line-height: 1.6; }
+        
+        .footer { text-align: center; color: #444; font-size: 14px; margin-top: 30px; padding: 25px; font-weight: bold; background: white; border-top: 3px solid var(--wolt-blue); line-height: 1.6; }
     </style>
 </head>
 <body>
 
 <div class="header">
     <div class="header-content">
-        <span class="flag-icon">🇮🇱</span>
+        <span class="flag">🇮🇱</span>
         <h1>קריית שמונה פתוחה</h1>
-        <span class="flag-icon">🇮🇱</span>
+        <span class="flag">🇮🇱</span>
     </div>
-    <p>כל העסקים שפעילים בזמן המלחמה</p>
+    <p style="margin:5px 0 0; font-size: 14px; color: #666;">עסקים פעילים בקריית שמונה בזמן המלחמה</p>
 </div>
 
-<div class="categories" id="catBar">
-    </div>
+<div class="categories" id="catBar"></div>
 
 <div class="container" id="bizContainer">
-    <div class="card" style="margin-bottom: 25px;">
-        <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/PikiWiki_Israel_44781_Israel_Roaring_Lion_Monumnet_%28Tel_Hai%29.jpg/640px-PikiWiki_Israel_44781_Israel_Roaring_Lion_Monumnet_%28Tel_Hai%29.jpg'); height: 200px;"></div>
+    <div class="card" style="border: 2px solid var(--wolt-blue);">
+        <div class="card-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/PikiWiki_Israel_44781_Israel_Roaring_Lion_Monumnet_%28Tel_Hai%29.jpg/640px-PikiWiki_Israel_44781_Israel_Roaring_Lion_Monumnet_%28Tel_Hai%29.jpg'); height: 180px;"></div>
         <div class="card-content" style="text-align: center;">
-            <p style="font-size: 16px; font-weight: bold; margin: 0;">אריה לא פוחד! 🦁</p>
-            <p style="font-size: 13px; color: #666; margin: 5px 0 0 0;">קהילת קריית שמונה - חזקה, איתנה ועומדת יחד.🇮🇱</p>
+            <h2 style="margin:0;">אריה לא פוחד! 🦁</h2>
+            <p style="margin:5px 0;">אנחנו חזקים יחד, קריית שמונה איתנה. 🇮🇱</p>
         </div>
     </div>
-    
-    </div>
+</div>
 
 <div class="footer">
-    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️
-    <br>🦁 חזקים יחד! 🇮🇱
+    נוצר באהבה לתושבים ובעלי העסקים בקריית שמונה ❤️<br>🦁 חזקים יחד! 🇮🇱
 </div>
 
 <script>
-// מאגר הנתונים המלא שחולץ מהצילומים
 const businesses = [
-    { name: "Best Burger", cat: "🍔 המבורגר", hours: "11:00-17:00", phone: "0772016918", info: "המבורגר וקריספי צ'יקן" },
-    { name: "Unicorn - יוניקורן", cat: "🥢 אסיאתי", hours: "עד 22:00", phone: "048457766", info: "סושי ותפריט אסיאתי חדש" },
-    { name: "פיצה נאפולי", cat: "🍕 פיצריות", hours: "16:00-23:30", phone: "", info: "משלוחים בלבד" },
-    { name: "אצל סמדי", cat: "🥩 בשרים", hours: "פעיל", phone: "0522971225", info: "באגטים ושיפודים, מבצע לחיילים 50 ש\"ח" },
-    { name: "ניצת הדובדבן", cat: "🛒 סופרים", hours: "08:00-19:00", phone: "", info: "מוצרי טבע, שוק רסקו" },
-    { name: "מינימרקט לב העיר", cat: "🛒 סופרים", hours: "06:00-19:00", phone: "0528010992", info: "משלוחים חינם בתוך קריית שמונה" },
-    { name: "המנעולן מוסרי", cat: "🛠️ שירותים", hours: "09:00-12:00", phone: "0502412082", info: "זמין לחירום 24/7" },
-    { name: "סוד החשמל", cat: "🛠️ שירותים", hours: "זמין 24/7", phone: "", info: "עבודות חשמל בק\"ש" },
-    { name: "רואיל גלואו", cat: "💅 טיפוח", hours: "10:00-20:00", phone: "0506090999", info: "קוסמטיקה וטיפוח" },
-    { name: "בר בריא", cat: "🍰 קינוחים", hours: "09:00-14:00", phone: "048862424", info: "מיצים ושייקים טבעיים" }
+    // אוכל ומתוקים
+    { name: "נתח קצבים", cat: "אוכל", sub: "קצביה", phone: "04-6905032", info: "בשרים טריים ואיכותיים" },
+    { name: "מעדני הגליל", cat: "אוכל", sub: "קצביה", phone: "04-6943905", info: "פתוח עד 18:00" },
+    { name: "סופר בשר", cat: "אוכל", sub: "קצביה", phone: "04-6875544", info: "פתוח עד 20:00" },
+    { name: "SMB Burger", cat: "אוכל", sub: "המבורגר לילה", phone: "052-6164165", info: "פתוח 00:00-02:00" },
+    { name: "Best Burger", cat: "אוכל", sub: "המבורגר", phone: "077-2016918", info: "11:00-17:00" },
+    { name: "הקבב של עובד", cat: "אוכל", sub: "בשרים", phone: "077-7661665", info: "קבב איכותי וטרי" },
+    { name: "רד מיט", cat: "אוכל", sub: "בשרים", phone: "04-8344913", info: "פתוח 17:00-01:00" },
+    { name: "יוניקורן Unicorn", cat: "אוכל", sub: "אסיאתי", phone: "04-8457766", info: "סושי ותפריט אסיאתי חדש" },
+    { name: "מרכז הפיצה", cat: "אוכל", sub: "פיצריה", phone: "04-6997020", info: "12:00-20:00 (יגאל ונת'י)" },
+    { name: "פלאפל עמר", cat: "אוכל", sub: "פלאפל", phone: "", info: "8:30-15:00" },
+    { name: "אלימלך אהבתי", cat: "אוכל", sub: "אוכל מוכן", phone: "", info: "8:30-19:00" },
+    { name: "מורמלדה", cat: "אוכל", sub: "קינוחים", phone: "052-5211391", info: "מתוקים ומארזים" },
+    { name: "יאמי יאמי", cat: "אוכל", sub: "קינוחים", phone: "04-8836660", info: "קינוחים מפנקים" },
+    { name: "בר בריא", cat: "אוכל", sub: "מיצים", phone: "04-8862424", info: "9:00-14:00" },
+
+    // קניות
+    { name: "מינימרקט רסקו", cat: "קניות", sub: "סופר", phone: "04-6951285", info: "6:00-22:00" },
+    { name: "מינימרקט דודו עזיז", cat: "קניות", sub: "סופר", phone: "04-6940376", info: "משלוחים חינם!" },
+    { name: "מיני מרקט ברכת השם", cat: "קניות", sub: "סופר", phone: "", info: "שפרינצק" },
+    { name: "ניצת הדובדבן", cat: "קניות", sub: "טבע", phone: "", info: "8:00-19:00" },
+    { name: "סופר ספיר יובלים", cat: "קניות", sub: "סופר", phone: "", info: "6:45-20:00" },
+    { name: "עילאי אקספרס", cat: "קניות", sub: "נוחות", phone: "", info: "8:00-20:00" },
+    { name: "פרדיס", cat: "קניות", sub: "בגדים", phone: "", info: "10:00-18:00" },
+    { name: "המרכז לחד פעמי", cat: "קניות", sub: "לבית", phone: "", info: "9:00-17:00" },
+    { name: "הגלריה", cat: "קניות", sub: "ריהוט", phone: "052-7522566", info: "עיצוב הבית" },
+    { name: "ימית - מארזים", cat: "קניות", sub: "מתנות", phone: "050-2755645", info: "מארזים בעיצוב אישי" },
+    { name: "שמחה בעיר", cat: "קניות", sub: "ציוד", phone: "", info: "9:00-17:00" },
+
+    // שירותים
+    { name: "המשלוח המהיר", cat: "שירותים", sub: "שליחויות", phone: "050-6444889", info: "10:00-00:00" },
+    { name: "יריב בן שימול", cat: "שירותים", sub: "ניקיון", phone: "054-4858222", info: "ניקיון חלונות ועסקים" },
+    { name: "סוד החשמל", cat: "שירותים", sub: "חשמל", phone: "", info: "זמין בכל שעה" },
+    { name: "המנעולן מוסרי", cat: "שירותים", sub: "מנעולן", phone: "050-2412082", info: "9:00-12:00" },
+    { name: "קיה קריית שמונה", cat: "שירותים", sub: "רכב", phone: "", info: "8:00-16:00" },
+    { name: "סטארט פארט", cat: "שירותים", sub: "רכב", phone: "053-8302104", info: "אביזרים והתקנות" },
+
+    // טיפוח
+    { name: "רויאל גלואו", cat: "טיפוח", sub: "קוסמטיקה", phone: "050-6090999", info: "10:00-20:00" },
+    { name: "טיפוחן", cat: "טיפוח", sub: "קוסמטיקה", phone: "052-5419530", info: "יופי וטיפוח" },
+    { name: "ענת קוסמטיקה", cat: "טיפוח", sub: "קוסמטיקה", phone: "052-6066016", info: "טיפוח פנים" },
+    { name: "אורי שושן", cat: "טיפוח", sub: "גבות", phone: "052-6789545", info: "עיצוב גבות" },
+    { name: "ארלוזורוב סנוקר", cat: "טיפוח", sub: "פנאי", phone: "", info: "18:00-02:00" }
 ];
 
-// יצירת כפתורי קטגוריות ייחודיים
-const categories = ["הכל", ...new Set(businesses.map(b => b.cat))];
+const catLabels = { all: "הכל", אוכל: "🍔 אוכל", קניות: "🛒 קניות", שירותים: "🛠️ שירותים", טיפוח: "💅 טיפוח ופנאי" };
 const catBar = document.getElementById('catBar');
-catBar.innerHTML = categories.map(cat => 
-    `<button class="cat-btn ${cat==='הכל'?'active':''}" onclick="filterData('${cat}', this)">${cat}</button>`
+catBar.innerHTML = Object.entries(catLabels).map(([id, label]) => 
+    `<button class="cat-btn ${id==='all'?'active':''}" onclick="filterData('${id}', this)">${label}</button>`
 ).join('');
 
 function renderCards(data) {
     const container = document.getElementById('bizContainer');
-    
-    // ניקוי הכרטיסיות למעט תמונת האריה הראשית
-    const cardsToClear = container.querySelectorAll('.biz-card');
-    cardsToClear.forEach(card => card.remove());
-    
-    if (data.length === 0) {
-        container.innerHTML += '<div class="biz-card" style="text-align: center; padding: 40px; color: #888;">לא נמצאו עסקים בקטגוריה זו.</div>';
-        return;
-    }
+    const existingCards = container.querySelectorAll('.biz-card');
+    existingCards.forEach(c => c.remove());
     
     data.forEach(b => {
-        container.innerHTML += `
-            <div class="card biz-card">
-                <div class="card-content">
-                    <div class="biz-category">${b.cat}</div>
-                    <h2 class="biz-name">${b.name}</h2>
-                    <div class="biz-info">
-                        ⏰ שעות פתיחה: <b>${b.hours}</b><br>
-                        ${b.info}
-                    </div>
-                </div>
-                ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר עכשיו</a>` : ''}
+        const card = document.createElement('div');
+        card.className = 'card biz-card';
+        card.innerHTML = `
+            <div class="card-content">
+                <div class="biz-cat">${b.sub}</div>
+                <h2 class="biz-name">${b.name}</h2>
+                <div class="biz-info">${b.info}</div>
             </div>
+            ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 התקשר: ${b.phone}</a>` : ''}
         `;
+        container.appendChild(card);
     });
 }
 
-function filterData(cat, btn) {
-    // עדכון כפתור פעיל
+function filterData(id, btn) {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    
-    // סינון נתונים
-    const filtered = cat === 'הכל' ? businesses : businesses.filter(b => b.cat === cat);
-    renderCards(filtered);
+    renderCards(id === 'all' ? businesses : businesses.filter(b => b.cat === id));
 }
 
-// הרצה ראשונית
 renderCards(businesses);
 </script>
-
 </body>
 </html>
