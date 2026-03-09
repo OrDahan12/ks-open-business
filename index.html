@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ק"ש פתוחה - Wolt Style</title>
+    <title>ק"ש פתוחה - המדריך המלא</title>
     <style>
         :root { --wolt-blue: #00c2e8; --bg: #f3f5f6; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; padding-bottom: 50px; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; padding-bottom: 50px; text-align: right; }
         .header { background: white; padding: 25px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .header h1 { font-size: 24px; margin: 0; color: var(--wolt-blue); font-weight: 900; }
-        .header p { margin: 5px 0 0; font-size: 14px; color: #666; }
         .categories { display: flex; overflow-x: auto; padding: 15px; gap: 10px; background: white; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #eee; }
         .categories::-webkit-scrollbar { display: none; }
         .cat-btn { background: #f0f1f2; padding: 10px 18px; border-radius: 25px; border: none; font-weight: 700; white-space: nowrap; cursor: pointer; font-size: 14px; }
         .cat-btn.active { background: var(--wolt-blue); color: white; }
         .container { padding: 15px; max-width: 600px; margin: 0 auto; }
         .card { background: white; border-radius: 16px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: block; }
-        .card-img { width: 100%; height: 140px; background-size: cover; background-position: center; background-color: #ddd; }
+        .card-img { width: 100%; height: 130px; background-size: cover; background-position: center; background-color: #eee; }
         .card-content { padding: 16px; }
         .biz-cat { font-size: 11px; color: var(--wolt-blue); font-weight: 800; margin-bottom: 4px; }
         .biz-name { font-size: 19px; font-weight: 800; margin: 0 0 8px 0; color: #222; }
@@ -28,7 +27,7 @@
 
 <div class="header">
     <h1>ק"ש פתוחה 🇮🇱</h1>
-    <p>עסקים פעילים בקריית שמונה בזמן המלחמה</p>
+    <p>עסקים פעילים בזמן המלחמה</p>
 </div>
 
 <div class="categories">
@@ -36,16 +35,16 @@
     <button class="cat-btn" onclick="filter('food', this)">🍔 אוכל</button>
     <button class="cat-btn" onclick="filter('shop', this)">🛒 קניות</button>
     <button class="cat-btn" onclick="filter('service', this)">🛠️ שירותים</button>
-    <button class="cat-btn" onclick="filter('beauty', this)">💅 טיפוח</button>
+    <button class="cat-btn" onclick="filter('beauty', this)">💅 טיפוח ובריאות</button>
 </div>
 
 <div class="container" id="list">
     <div class="card biz food">
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400');"></div>
         <div class="card-content">
-            <div class="biz-cat">המבורגר ובשר</div>
+            <div class="biz-cat">המבורגר</div>
             <h2 class="biz-name">Best Burger</h2>
-            <div class="biz-info">⏰ 11:00-17:00 | משלוחים: 0772016918</div>
+            <div class="biz-info">⏰ 11:00-17:00 | טלפון משלוחים: 0772016918</div>
         </div>
         <a href="tel:0772016918" class="btn-call">📞 התקשר להזמנה</a>
     </div>
@@ -55,7 +54,7 @@
         <div class="card-content">
             <div class="biz-cat">בשרים</div>
             <h2 class="biz-name">אצל סמדי</h2>
-            <div class="biz-info">⏰ פעיל | באגט/פיתה עם 2 שיפודים ושתיה ב-50 ש"ח לחיילים.</div>
+            <div class="biz-info">⏰ פעיל | באגט עם 2 שיפודים ושתיה ב-50 ש"ח לחיילים.</div>
         </div>
         <a href="tel:0522971225" class="btn-call">📞 התקשר להזמנה</a>
     </div>
@@ -64,20 +63,10 @@
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400');"></div>
         <div class="card-content">
             <div class="biz-cat">אסיאתי</div>
-            <h2 class="biz-name">יוניקורן (Unicorn)</h2>
-            <div class="biz-info">⏰ עד 22:00 | סושי ותפריט אסיאתי חדש.</div>
+            <h2 class="biz-name">Unicorn (יוניקורן)</h2>
+            <div class="biz-info">⏰ עד 22:00 | תפריט אסיאתי חדש וסושי. טלפון: 048457766</div>
         </div>
         <a href="tel:048457766" class="btn-call">📞 התקשר להזמנה</a>
-    </div>
-
-    <div class="card biz food">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400');"></div>
-        <div class="card-content">
-            <div class="biz-cat">איטלקי</div>
-            <h2 class="biz-name">רוקו (Roco)</h2>
-            <div class="biz-info">⏰ פעיל | מסעדה איטלקית.</div>
-        </div>
-        <div class="btn-call" style="background:#888">פרטים בפוסט</div>
     </div>
 
     <div class="card biz food">
@@ -85,7 +74,7 @@
         <div class="card-content">
             <div class="biz-cat">פיצריות</div>
             <h2 class="biz-name">פיצה נאפולי</h2>
-            <div class="biz-info">⏰ 16:00-23:30 | משלוחים בלבד.</div>
+            <div class="biz-info">⏰ 16:00-23:30 | עובדים במתכונת משלוחים בלבד.</div>
         </div>
         <div class="btn-call" style="background:#888">משלוחים בלבד</div>
     </div>
@@ -94,20 +83,76 @@
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?w=400');"></div>
         <div class="card-content">
             <div class="biz-cat">פיצריות</div>
-            <h2 class="biz-name">מרכז הפיצה (יגאל ונת'י)</h2>
-            <div class="biz-info">⏰ 12:00-20:00 | משלוחים: 046997020</div>
+            <h2 class="biz-name">מרכז הפיצה - יגאל ונת'י</h2>
+            <div class="biz-info">⏰ 12:00-20:00 | רסקו. טלפון: 046997020</div>
         </div>
         <a href="tel:046997020" class="btn-call">📞 התקשר להזמנה</a>
     </div>
 
     <div class="card biz food">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1626074353765-517a681e40be?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">פלאפל</div>
+            <h2 class="biz-name">פלאפל עמר</h2>
+            <div class="biz-info">⏰ 08:30-15:00 | פתוחים לשירות הציבור.</div>
+        </div>
+    </div>
+
+    <div class="card biz food">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">מתוקים</div>
+            <h2 class="biz-name">רולדין</h2>
+            <div class="biz-info">⏰ 07:00-15:00 | לחמים ומאפים טריים.</div>
+        </div>
+    </div>
+
+    <div class="card biz shop">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">סופרמרקט</div>
+            <h2 class="biz-name">מינימרקט לב העיר</h2>
+            <div class="biz-info">⏰ 06:00-19:00 | משלוחים חינם: 0528010992</div>
+        </div>
+        <a href="tel:0528010992" class="btn-call">📞 הזמן משלוח</a>
+    </div>
+
+    <div class="card biz shop">
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400');"></div>
         <div class="card-content">
-            <div class="biz-cat">קצביה</div>
-            <h2 class="biz-name">נתח קצבים</h2>
-            <div class="biz-info">⏰ פעיל | בשרים טריים ואיכותיים.</div>
+            <div class="biz-cat">בשר</div>
+            <h2 class="biz-name">מעדני הגליל - קצביה</h2>
+            <div class="biz-info">⏰ עד 18:00 | משלוחים עד הבית: 046943905</div>
         </div>
-        <div class="btn-call" style="background:#888">פתוח לשירות</div>
+        <a href="tel:046943905" class="btn-call">📞 הזמן בשר</a>
+    </div>
+
+    <div class="card biz shop">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1543083505-e7f5d53a1e38?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">טבע</div>
+            <h2 class="biz-name">ניצת הדובדבן</h2>
+            <div class="biz-info">⏰ 08:00-19:00 | שוק רסקו, ק"ש.</div>
+        </div>
+    </div>
+
+    <div class="card biz shop">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">סופרמרקט</div>
+            <h2 class="biz-name">סופר ספיר יובלים</h2>
+            <div class="biz-info">⏰ 06:45-20:00 | שכונת יובלים.</div>
+        </div>
+    </div>
+
+    <div class="card biz service">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400');"></div>
+        <div class="card-content">
+            <div class="biz-cat">מנעולן</div>
+            <h2 class="biz-name">המנעולן מוסרי</h2>
+            <div class="biz-info">⏰ 09:00-12:00 | חירום 24/7: 0502412082</div>
+        </div>
+        <a href="tel:0502412082" class="btn-call">📞 חיוג חירום</a>
     </div>
 
     <div class="card biz service">
@@ -115,59 +160,27 @@
         <div class="card-content">
             <div class="biz-cat">חשמלאי</div>
             <h2 class="biz-name">סוד החשמל</h2>
-            <div class="biz-info">⏰ זמין בכל שעה | כל סוגי עבודות החשמל.</div>
+            <div class="biz-info">⏰ זמין בכל שעה | עבודות חשמל.</div>
         </div>
-        <div class="btn-call" style="background:#888">זמין לחירום</div>
-    </div>
-
-    <div class="card biz service">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1562426509-5044a121aa49?w=400');"></div>
-        <div class="card-content">
-            <div class="biz-cat">מוסך ושירות</div>
-            <h2 class="biz-name">קיה קריית שמונה</h2>
-            <div class="biz-info">⏰ 08:00-16:00 | שירות ומכירה.</div>
-        </div>
-        <div class="btn-call" style="background:#ccc;">פתוח לשירות</div>
-    </div>
-
-    <div class="card biz service">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400');"></div>
-        <div class="card-content">
-            <div class="biz-cat">מנעולנות</div>
-            <h2 class="biz-name">המנעולן מוסרי</h2>
-            <div class="biz-info">⏰ 09:00-12:00 | חירום 24/7.</div>
-        </div>
-        <a href="tel:0502412082" class="btn-call">📞 התקשר לחירום</a>
-    </div>
-
-    <div class="card biz shop">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400');"></div>
-        <div class="card-content">
-            <div class="biz-cat">מתנות</div>
-            <h2 class="biz-name">Mormelada (מורמלדה)</h2>
-            <div class="biz-info">⏰ פעיל | מתנות ומארזים.</div>
-        </div>
-        <div class="btn-call" style="background:#888">פרטים בפוסט</div>
     </div>
 
     <div class="card biz beauty">
         <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400');"></div>
         <div class="card-content">
             <div class="biz-cat">קוסמטיקה</div>
-            <h2 class="biz-name">אורי הדר שושן</h2>
-            <div class="biz-info">⏰ פעיל | עיצוב גבות ומיקרובליידינג.</div>
+            <h2 class="biz-name">רואיל גלואו</h2>
+            <div class="biz-info">⏰ 10:00-20:00 | טלפון: 0506090999</div>
         </div>
-        <div class="btn-call" style="background:#888">בתיאום מראש</div>
+        <a href="tel:0506090999" class="btn-call">📞 תיאום תור</a>
     </div>
 
-    <div class="card biz shop">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=400');"></div>
+    <div class="card biz beauty">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400');"></div>
         <div class="card-content">
-            <div class="biz-cat">סופרמרקט</div>
-            <h2 class="biz-name">מיני מרקט ברכת השם</h2>
-            <div class="biz-info">⏰ פעיל | שפרינצק.</div>
+            <div class="biz-cat">בריאות</div>
+            <h2 class="biz-name">רפואה שלמה (אבישי)</h2>
+            <div class="biz-info">⏰ 08:00-15:00 | דיקור ועיסויים.</div>
         </div>
-        <div class="btn-call" style="background:#888">פתוח לשירות</div>
     </div>
 
 </div>
