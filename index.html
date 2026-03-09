@@ -780,7 +780,7 @@ const catConfig = {
     },
     sushi: {
         label: "🍣 סושי וחלבי",
-        hero: "אסיאתי, חומוס וחלבי",
+        hero: "אסיאתי, שקשוקה וחלבי",
         emoji: "🍣",
         gradient: "linear-gradient(135deg, #064e3b, #065f46)",
         imgUrl: "https://images.unsplash.com/photo-1582450871972-ab5ca641643d?w=800&q=80"
@@ -791,6 +791,20 @@ const catConfig = {
         emoji: "🍕",
         gradient: "linear-gradient(135deg, #7c2d12, #9a3412)",
         imgUrl: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80"
+    },
+    dessert: {
+        label: "🍰 קינוחים ומתוקים",
+        hero: "קינוחים, מאפים ומתוקים",
+        emoji: "🍰",
+        gradient: "linear-gradient(135deg, #831843, #9d174d)",
+        imgUrl: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
+    },
+    hummus: {
+        label: "🥙 חומוס ופלאפל",
+        hero: "חומוס, פלאפל ואוכל רחוב",
+        emoji: "🥙",
+        gradient: "linear-gradient(135deg, #713f12, #92400e)",
+        imgUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80"
     },
     butcher: {
         label: "🔪 קצביות",
@@ -826,20 +840,14 @@ const catConfig = {
         emoji: "🔧",
         gradient: "linear-gradient(135deg, #1c1917, #292524)",
         imgUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80"
-    },
-    dessert: {
-        label: "🍰 קינוחים ומתוקים",
-        hero: "קינוחים, מאפים ומתוקים",
-        emoji: "🍰",
-        gradient: "linear-gradient(135deg, #831843, #9d174d)",
-        imgUrl: "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
-    },
-    hummus: {
-        label: "🥙 חומוס ופלאפל",
-        hero: "חומוס, פלאפל ואוכל רחוב",
-        emoji: "🥙",
-        gradient: "linear-gradient(135deg, #713f12, #92400e)",
-        imgUrl: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80"
+    }
+    ,
+    other: {
+        label: "🏪 אחר",
+        hero: "עסקים נוספים ושונים",
+        emoji: "🏪",
+        gradient: "linear-gradient(135deg, #78716c, #a8a29e)",
+        imgUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80"
     }
 };
 
@@ -881,7 +889,7 @@ function renderCards(data, catId) {
     container.innerHTML = buildHeroHTML(catId, data.length);
 
     data.forEach(b => {
-        const cfg = catConfig[b.cat];
+        const cfg = catConfig[b.cat] || catConfig.other;
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
@@ -957,23 +965,19 @@ async function handleJoinSubmit(e) {
     }
 }
 
-// Parses a single CSV line, respecting double-quoted fields
+// Parse CSV line by splitting first columns and keeping commas inside the info field.
 function parseCSVLine(line) {
-    const result = [];
-    let current = '';
-    let inQuotes = false;
-    for (const ch of line) {
-        if (ch === '"') { inQuotes = !inQuotes; }
-        else if (ch === ',' && !inQuotes) { result.push(current); current = ''; }
-        else { current += ch; }
-    }
-    result.push(current);
-    return result;
+    const parts = line.split(',');
+    const name = (parts[0] || '').trim();
+    const cat = (parts[1] || '').trim();
+    const phone = (parts[2] || '').trim();
+    const info = parts.slice(3).join(',').trim();
+    return [name, cat, phone, info];
 }
 
 async function loadBusinesses() {
     try {
-        const res = await fetch('businesses.csv');
+        const res = await fetch('businesses.csv?v=' + Date.now());
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const text = await res.text();
         const lines = text.trim().split('\n').slice(1); // skip header row
@@ -982,7 +986,8 @@ async function loadBusinesses() {
             .map(line => {
                 const [name, cat, phone, info] = parseCSVLine(line);
                 return { name, cat, phone, info };
-            });
+            })
+            .filter(b => b.name);
         renderCards(businesses, 'all');
     } catch (err) {
         console.error('Could not load businesses.csv:', err);
