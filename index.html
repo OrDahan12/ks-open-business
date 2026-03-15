@@ -298,6 +298,91 @@
         .footer a { color: var(--gold); text-decoration: none; font-weight: 700; }
         .footer .heart { color: #e11d48; }
 
+        /* ===== SEARCH BAR ===== */
+        .search-wrap {
+            padding: 0 0 16px 0;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border: 1.5px solid var(--card-border);
+            border-radius: 14px;
+            padding: 0 14px;
+            gap: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+        }
+
+        .search-box svg {
+            flex-shrink: 0;
+            color: var(--text-muted);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 14px 0;
+            font-family: 'Heebo', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--navy);
+            background: transparent;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 18px;
+            padding: 0 2px;
+            line-height: 1;
+            display: none;
+        }
+
+        .search-clear.visible { display: block; }
+
+        .search-no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* ===== NEW BADGE ===== */
+        .badge-new {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #16a34a;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 50px;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(22,163,74,0.35);
+            pointer-events: none;
+        }
+
         .flag-banner {
             background: linear-gradient(135deg, var(--navy), #1e3a8a);
             color: white;
@@ -693,7 +778,10 @@
                     <option value="מינימרקטים וסופרים">🛒 מינימרקטים וסופרים</option>
                     <option value="פנאי ומתנות">🎈 פנאי ומתנות</option>
                     <option value="טיפוח ויופי">💅 טיפוח ויופי</option>
-                    <option value="רכב ושירותים">🛠️ רכב ושירותים</option>
+                    <option value="עיצוב שיער">✂️ עיצוב שיער</option>
+                    <option value="שירותי בית">🏠 שירותי בית</option>
+                    <option value="הסעות ושליחויות">🚕 הסעות ושליחויות</option>
+                    <option value="שירותי רכב">🚗 שירותי רכב</option>
                     <option value="קינוחים ומתוקים">🍰 קינוחים ומתוקים</option>
                     <option value="אחר">🏪 אחר</option>
                     <option value="מחשבים ואלקטרוניקה">💻 מחשבים ואלקטרוניקה</option>
@@ -941,10 +1029,31 @@ const catConfig = {
         gradient: "linear-gradient(135deg, #4a044e, #701a75)",
         imgUrl: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
     },
+    hair: {
+        label: "✂️ עיצוב שיער",
+        hero: "מספרות וסטודיות שיער",
+        emoji: "✂️",
+        gradient: "linear-gradient(135deg, #1e3a5f, #2563eb)",
+        imgUrl: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80"
+    },
+    homeservice: {
+        label: "🏠 שירותי בית",
+        hero: "חשמל, גינון, מנעול ועוד",
+        emoji: "🏠",
+        gradient: "linear-gradient(135deg, #065f46, #047857)",
+        imgUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+    },
+    delivery: {
+        label: "🚕 הסעות ושליחויות",
+        hero: "מוניות, הסעות ושליחויות",
+        emoji: "🚕",
+        gradient: "linear-gradient(135deg, #1e3a5f, #1d4ed8)",
+        imgUrl: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
+    },
     service: {
-        label: "🛠️ שירותים לבית ועסק",
-        hero: "מוסכים ושירותי תחזוקה",
-        emoji: "🔧",
+        label: "🚗 שירותי רכב",
+        hero: "מוסכים ושירותי רכב",
+        emoji: "🚗",
         gradient: "linear-gradient(135deg, #1c1917, #292524)",
         imgUrl: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80"
     },
@@ -997,26 +1106,84 @@ function buildHeroHTML(catId, count) {
     </div>`;
 }
 
+function buildCard(b) {
+    const cfg = catConfig[b.cat] || catConfig.other;
+    const isNew = newBusinesses.has(b.name);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.position = 'relative';
+    card.innerHTML = `
+        <div class="card-content">
+            <div class="cat-icon-badge">${cfg.emoji}</div>
+            <div class="card-text">
+                <h2 class="biz-name">${b.name}</h2>
+                <div class="biz-info">🕐 ${b.info.replace(/(https?:\/\/[^\s|]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')}</div>
+            </div>
+        </div>
+        ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 &nbsp;${b.phone}</a>` : ''}
+        ${isNew ? '<span class="badge-new">✨ חדש</span>' : ''}
+    `;
+    return card;
+}
+
 function renderCards(data, catId) {
     const container = document.getElementById('bizContainer');
     container.innerHTML = buildHeroHTML(catId, data.length);
 
-    data.forEach(b => {
-        const cfg = catConfig[b.cat] || catConfig.other;
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <div class="card-content">
-                <div class="cat-icon-badge">${cfg.emoji}</div>
-                <div class="card-text">
-                    <h2 class="biz-name">${b.name}</h2>
-                    <div class="biz-info">🕐 ${b.info}</div>
-                </div>
+    if (catId === 'all') {
+        const searchWrap = document.createElement('div');
+        searchWrap.className = 'search-wrap';
+        searchWrap.innerHTML = `
+            <div class="search-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input class="search-input" id="bizSearch" type="search" placeholder="חפש עסק לפי שם או תיאור..." autocomplete="off">
+                <button class="search-clear" id="searchClear" aria-label="נקה חיפוש">&times;</button>
             </div>
-            ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 &nbsp;${b.phone}</a>` : ''}
         `;
-        container.appendChild(card);
-    });
+        container.appendChild(searchWrap);
+
+        const cardsFragment = document.createDocumentFragment();
+        data.forEach(b => cardsFragment.appendChild(buildCard(b)));
+        container.appendChild(cardsFragment);
+
+        const input = document.getElementById('bizSearch');
+        const clearBtn = document.getElementById('searchClear');
+        const heroCount = container.querySelector('.hero-count');
+
+        input.addEventListener('input', () => {
+            const q = input.value.trim().toLowerCase();
+            clearBtn.classList.toggle('visible', q.length > 0);
+            let shown = 0;
+            container.querySelectorAll('.card').forEach((card, i) => {
+                const b = data[i];
+                const match = !q || b.name.toLowerCase().includes(q) || b.info.toLowerCase().includes(q);
+                card.style.display = match ? '' : 'none';
+                if (match) shown++;
+            });
+            if (heroCount) heroCount.textContent = shown + ' עסקים פתוחים';
+            let noRes = container.querySelector('.search-no-results');
+            if (shown === 0) {
+                if (!noRes) {
+                    noRes = document.createElement('div');
+                    noRes.className = 'search-no-results';
+                    noRes.textContent = 'לא נמצאו עסקים תואמים 🔍';
+                    container.appendChild(noRes);
+                }
+            } else if (noRes) {
+                noRes.remove();
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            input.value = '';
+            input.dispatchEvent(new Event('input'));
+            input.focus();
+        });
+    } else {
+        data.forEach(b => container.appendChild(buildCard(b)));
+    }
 }
 
 function filterData(id, btn) {
@@ -1024,7 +1191,8 @@ function filterData(id, btn) {
     btn.classList.add('active');
     document.getElementById('joinSection').style.display = 'none';
     document.getElementById('bizContainer').style.display = '';
-    const filtered = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
+    const pool = id === 'all' ? businesses : businesses.filter(b => b.cat === id);
+    const filtered = [...pool].sort((a, b) => (newBusinesses.has(b.name) ? 1 : 0) - (newBusinesses.has(a.name) ? 1 : 0));
     renderCards(filtered, id);
 }
 
@@ -1143,6 +1311,19 @@ function parseCSVLine(line) {
     return [name, cat, phone, info];
 }
 
+// Business names added since last main commit (a7a3a16)
+const newBusinesses = new Set([
+    'ליאור הדברות',
+    'עומר שלג- מספרת',
+    'PulseFitness',
+    'נבו דדון- אקדמיה ומספרת גברים',
+    'Beauty studio shiran peretz',
+    'מסעדת אמיגוס',
+    'מוניות ג\'קי',
+    'מספרת כפיר אוחיון',
+    'מכון שיא היופי',
+]);
+
 async function loadBusinesses() {
     try {
         const res = await fetch('businesses.csv?v=' + Date.now());
@@ -1156,6 +1337,7 @@ async function loadBusinesses() {
                 return { name, cat, phone, info };
             })
             .filter(b => b.name);
+        businesses.sort((a, b) => (newBusinesses.has(b.name) ? 1 : 0) - (newBusinesses.has(a.name) ? 1 : 0));
         renderCards(businesses, 'all');
     } catch (err) {
         console.error('Could not load businesses.csv:', err);
@@ -1164,5 +1346,7 @@ async function loadBusinesses() {
 
 loadBusinesses();
 </script>
+<script data-goatcounter="https://ks-business.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
