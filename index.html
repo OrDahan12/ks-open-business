@@ -1010,7 +1010,7 @@ function renderCards(data, catId) {
                 <div class="cat-icon-badge">${cfg.emoji}</div>
                 <div class="card-text">
                     <h2 class="biz-name">${b.name}</h2>
-                    <div class="biz-info">🕐 ${b.info}</div>
+                    <div class="biz-info">🕐 ${b.info.replace(/(https?:\/\/[^\s|]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>')}</div>
                 </div>
             </div>
             ${b.phone ? `<a href="tel:${b.phone}" class="btn-call">📞 &nbsp;${b.phone}</a>` : ''}
